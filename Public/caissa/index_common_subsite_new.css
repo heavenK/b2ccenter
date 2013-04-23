@@ -1,0 +1,143 @@
+.body_bg_posi{ background-position:0 646px;}
+.menu{height:60px;position:relative;background:url(../i/index_topbg02.gif) 9px 0 no-repeat;padding-left:17px;}
+.menu a{float:left;width:64px;margin:22px 25px 0 0;height:16px;display:block;text-indent:-500px;overflow:hidden;}
+.menu a:hover,a.bg1_show,a.bg2_show,a.bg3_show,a.bg4_show,a.bg5_show,a.bg6_show,a.bg7_show,a.bg8_show,a.bg9_show{text-decoration:none;background:url(../i/index_topbg02.gif) no-repeat;}
+.menu a.bg1{width:36px;}
+.menu a.bg1:hover,.menu a.bg1_show{background-position:-8px -82px}
+.menu a.bg2{width:48px;}
+.menu a.bg2:hover,.menu a.bg2_show{background-position:-69px -82px}
+.menu a.bg3{width:47px;margin:22px 23px 0 0;}
+.menu a.bg3:hover,.menu a.bg3_show{background-position:-142px -82px}
+.menu a.bg4{width:63px;}
+.menu a.bg4:hover,.menu a.bg4_show{background-position:-683px -82px}
+.menu a.bg5,
+.menu a.bg6{width:63px}
+.menu a.bg5:hover,.menu a.bg5_show{background-position:-212px -82px}
+.menu a.bg6:hover,.menu a.bg6_show{background-position:-300px -82px;}
+.menu a.bg7{width:65px;}
+.menu a.bg7:hover,.menu a.bg7_show{background-position:-388px -82px;}
+.menu a.bg8{width:77px;}
+.menu a.bg8:hover,.menu a.bg8_show{background-position:-478px -82px;}
+.menu a.bg9{width:78px;}
+.menu a.bg9:hover,.menu a.bg9_show{background-position:-580px -82px;}
+.menu a.bg10:hover,.menu a.bg10_show{background-position:-771px -82px}
+.menu .hot,.menu .new,.menu .gift{position:absolute;width:21px;height:12px;background-position:-446px 0;top:8px;left:445px}
+.menu .new{background:url(../i/New.gif) 0 0 no-repeat;left:275px}
+.menu .gift{background:url(../i/Gift.gif) 0 0 no-repeat;left:655px}
+.menu .Mobile{float:right; margin:0; margin-right:11px; color:#ebcc78;}
+.Mobile a{ float:none; height:60px; display:block; margin:0; width:120px; background-position:859px 0; }
+.Mobile a:hover{ background-position:859px 0;}
+.menu .Mobile s{float:left;display:block;background-position:-470px -69px;width:15px;height:18px}
+
+a.more{display:block;width:47px;height:11px;background-position:0 -132px;text-indent:-300px;float:right;margin-top:11px;overflow:hidden;}
+
+.c_pic{width:190px;height:195px;float:left;overflow:hidden;}
+.aBg1{position:relative;display:block;zoom:1;}
+.aBg1 .jn_icon{margin:0 auto;position:absolute;border:none !important;background:none !important;}
+
+.free_submenu{margin:0 6px;padding:0 0 4px 6px;}
+.free_submenu a{}
+
+/************** pop login layer *****************/
+#login_box{ width:390px; height:280px; border:1px solid #808080; background-color:#FFF; position:absolute; left:50px; top:200px; display:none;}
+#dragDiv{ height:40px;}
+#login_box .title{ display:block; width:113px; height:21px; background:url(../i/login_title.gif) 0 0 no-repeat; float:left; margin:18px 0 0 15px; _margin-left:7px;}
+#login_box .shutdown{ display:block; float:right; padding-right:15px; background:url(../i/shutdown.gif) 28px 5px no-repeat; background-position:28px 3px\9; margin:5px;}
+#login_box table{ width:100%;}
+#login_box .login_text{ padding:15px 40px 0 35px;}
+#login_box td{ vertical-align:middle; padding:5px 0;}
+.name,.password{ width:237px; height:24px; border:1px solid #948981; background-color:#fdfaf3}
+.authencode{ width:67px; height:24px; border:1px solid #948981; background-color:#fdfaf3}
+.login_tip{ display:block; margin:0 40px 0 90px;}
+.input_text{ margin-top:5px;}
+.input_text textarea{ width:520px; padding:6px 12px; border:1px solid #948981; background-color:#fdfaf3; margin-bottom:10px; height:78px; overflow:hidden;}
+.input_text .submit{ float:right;}
+
+
+
+/*login,register layer*/
+.logregisdiv{ border:1px solid #dfdfdf; background-color:#fff; position:absolute; display:none; z-index:1000;}
+.layerbg {background: none repeat scroll 0 0 #000000;left: 0;opacity: 0.3;position: absolute;top: 0;width: 100%; filter:Alpha(opacity=20);}
+.Pop{border:1px solid #fff; width:526px; height:384px; z-index:999;}
+
+#Popupbox_bg{ position:absolute; top:0; background-color:#000; left:0; display:none;}
+#Popbox{background:url(../i/ss.jpg) repeat-x #fff; position:absolute; width:528px; height:386px; display:none; z-index:999;}
+.Pop_title{ background:url(../i/Pop.jpg) no-repeat; height:54px;}
+.Pop_xx a{ background:url(../i/x.jpg) no-repeat; width:23px; height:23px; display:block; float:right; margin:9px 9px 0 0; text-indent:-25px; overflow:hidden;}
+.Pop_Content{ margin:0 auto; width:508px; border-top:1px solid #524235; padding-top:20px;}
+#Pop_Content_table td{ height:40px;}
+#Pop_Content_table td em{ border:1px solid #ccc; display:block; float:left; margin-left:5px;}
+#Pop_Content_table a{ line-height:30px;}
+.Pop_Content span{ padding-left:19px;}
+.Pop_sr1,.Pop_sr2,.Pop_sr3,.Pop_sr4,.Pop_sr5{ background: url(../i/Pop.gif) left top no-repeat; border:none; width:367px; height:22px; padding:2px 0 0 3px;}
+.Pop_sr2{background: url(../i/Pop.gif) left -27px no-repeat;  height:95px; }
+.Pop_sr3{ background:url(../i/Pop.gif) left -126px no-repeat; width:110px;}
+.Pop_sr4{ background:url(../i/Pop.gif) left -186px no-repeat; width:190px;}
+.Pop_sr5{background:url(../i/Pop.gif) left -155px no-repeat;width:67px; float:left;}
+.Pop_sr_an a{ background:url(../i/an.gif) left -361px no-repeat; display:block; margin:0 auto; width:80px; height:32px; text-indent:-50px; overflow:hidden; margin-top:10px;}
+
+
+#Popbox1{background:url(../i/ss.jpg) repeat-x #fff; position:absolute; width:636px; height:386px; display:none; z-index:999;}
+.Pop1{ border:1px solid #fff; width:634px; height:384px;}
+.Pop_Content1{ margin:32px 0 0 24px; float:left;background:url(../i/Pop2.jpg) no-repeat; padding-top:30px; width: 350px; display:inline;}
+.Pop_title1{ background:url(../i/Pop1.jpg) no-repeat; height:54px;}
+
+.zcdl,.zcdl_yz{ background:url(../i/Pop.gif) left -216px no-repeat; border:none; height:22px; width:168px; padding:2px 0 0 3px;}
+.zcdl_yz{ background:url(../i/Pop.gif) left -155px no-repeat; width:52px; padding:2px 0 0 3px; float:left;}
+#zcdl_bt td{ height:35px;}
+#zcdl_bt td img{ border:1px solid #ccc; margin-left:5px;}
+.tytk{ margin-top:10px;}
+.zcdl_an a{ width:80px; height:33px; background:url(../i/an.gif) left -584px no-repeat; display:block; text-indent:-50px; margin:10px auto; overflow:hidden;}
+.zcdl_right{ width:250px; background: url(../i/Pop3.jpg) 13px 11px no-repeat #ececec; float:right; margin:20px 10px 0 0; height:240px; padding-top:50px; display:inline;}
+
+
+#zcdl_bt2{ margin-left:13px;}
+#zcdl_bt2 td{ height:35px;}
+.zcdl_x,.zcdl_s{ background:url(../i/Pop.gif) left -246px no-repeat; border:none; height:22px; width:128px; padding:2px 0 0 3px;}
+.zcdl_s{ background:url(../i/Pop.gif) left -155px no-repeat;  width:52px; float:left;}
+#zcdl_bt2 td img{ border:1px solid #ccc; margin-left:5px;}
+.zcdl_right_an a{ width:80px; height:33px; background:url(../i/an.gif) left -182px no-repeat; display:block; text-indent:-50px; margin:23px auto 17px auto; overflow:hidden;}
+.zcdl_right_an{ border-bottom:1px solid #000; margin-bottom:5px;}
+
+/*pages*/
+.Page{ float:right;text-align:right;}
+.Page_1,.Page_2{ float:left; height:15px;}
+.Page_2,.Page li{ border:1px solid #dfdfdf; margin-left:9px;}
+.Page_2{ width:49px; height:19px;}
+.Page_2 a:hover{background:#534134; color:#fff; display: block;}
+.Page ul{ float:left;}
+.Page li{float:left;width:19px;height:19px;}
+.Page li a:hover{ background:#534134; color:#fff; display:block; }
+.Page_sz{ width:19px;height:19px;}
+.Page li,.Page_2{ text-align:center;}
+.Page li a:hover,.Page_2 a:hover{text-decoration:none;}
+.Page li.cur {background: none repeat scroll 0 0 #534134; color: #FFFFFF; display: block;}
+
+.olympic{ width:1000px; margin:0 auto; }
+.olympic_cont{ margin:0 20px; border-bottom:1px solid #aca190; padding-top:6px;}
+.olympic img{ float:left; margin:0 15px 0 19px;}
+.olympic p{ display:block; float:left; width:705px; margin-top:15px; color:#715c46;}
+.olympic .olympic_tz{ float:right; width:161px; height:93px; background:url(/zip/www/images/olympic_china.jpg) 0 0 no-repeat;}
+.olympic .olympic_tz a{ color:#fff; display:block;}
+.olympic .olympic_tz .olympic_london{ margin:42px 0 0 23px;}
+.olympic .olympic_tz .olympic_china{ margin:4px 0 0 23px;}
+
+/*20120724 login register*/
+.Pop_Content2{background:url(../i/Pop4.jpg) center 56px no-repeat;padding:118px 0 0;margin:24px 0 0;width:374px;float:left;color:#bcb7b3;text-align:center;}
+.Pop_Content2 a.Direct_booking{background: url("../i/an.gif") 0 -219px no-repeat;display:block;margin:20px auto;text-indent:-3000px;overflow:hidden;width:80px;height:33px;}
+
+/*参团自由行详情页（游记攻略） 20121101*/
+/*游记攻略） 20121101*/
+.stroke_main_title{ height:30px; line-height:30px; background-color:#ece9e4;color:#534134; font-size:14px; font-weight:bold; padding-left:20px}
+.stroke_main_title span{ float:left;}
+.stroke_main_title .menu01{ margin-right:20px}
+.stroke_main_title img{ padding:0 10px; vertical-align:-3px;}
+.stroke_main_title .tip{color:#ff6600; font-size:12px; font-weight:normal; float:right;}
+.strategy{padding:15px 30px;}
+.strategy_box{padding:15px; border:1px #bdb097 solid;width:866px;overflow:hidden;height:262px;}
+.strategy_box li{ display:block; background:url(../i/dotted_line.gif) bottom repeat-x; padding:10px 0; height:120px;}
+.strategy_box_img{ border:1px #d0c9bc solid; padding:2px; width:189px; height:107px; margin-right:15px; float:left}
+.strategy_box li p{ float:left; width:500px}
+.strategy_box li span{ color:#c7af89;}
+.strategy_box li b{ color:#ff6600;}
+.headpic {background: url("../i/Headpic_bg.gif") no-repeat scroll 0 0 transparent;padding-right: 5px;text-align: center;width: 50px; float:right;}

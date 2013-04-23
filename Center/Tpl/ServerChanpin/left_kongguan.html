@@ -1,0 +1,89 @@
+<php>if(!$pagetype){</php>
+  <div id="leftColumn" style="margin-top:0px; width:160px;">
+        <ul id="searchTabs" class="tablist tablist_2">
+          <li><a id="shownavtab_1" <php>if($listtype == '分类' || !$listtype){</php>class="current"<php>}</php> href="<{:SITE_INDEX}>ServerChanpin/zituanlist/listtype/分类" onclick="shownavtab(1)">&nbsp;分类&nbsp;</a></li>
+          <li><a id="shownavtab_2" <php>if($listtype == '供应商'){</php>class="current"<php>}</php> href="<{:SITE_INDEX}>ServerChanpin/zituanlist/listtype/供应商" onclick="shownavtab(2)">&nbsp;供应商&nbsp;</a></li>
+        </ul>
+        <div id="navtab_1" class="leftList" <php>if($listtype == '供应商'){</php>style="display:none;"<php>}</php>>
+          <h3><span>分类</span><a href="<{:SITE_INDEX}>ServerChanpin/zituanlist">&nbsp;<span>全部</span></a></h3>
+          <ul id="ul_shortcuts">
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/近郊游">&nbsp;<span>近郊游</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/长线游">&nbsp;<span>长线游</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/韩国">&nbsp;<span>韩国</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/日本">&nbsp;<span>日本</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/台湾">&nbsp;<span>台湾</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/港澳">&nbsp;<span>港澳</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/东南亚">&nbsp;<span>东南亚</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/欧美岛">&nbsp;<span>欧美岛</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/俄罗斯">&nbsp;<span>俄罗斯</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/越柬">&nbsp;<span>越柬</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/自由人">&nbsp;<span>自由人</span></a> </li>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/kind_copy/包团">&nbsp;<span>包团</span></a> </li>
+          </ul>
+        </div>
+        
+        <div id="navtab_2" class="leftList" <php>if($listtype != '供应商'){</php>style="display:none;"<php>}</php>>
+          <h3><span>供应商</span><a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/guojing/国内/listtype/<{$v[listtype]}>">&nbsp;<span>全部</span></a></h3>
+          <ul id="ul_shortcuts">
+            <php>foreach($bumenlist as $v){</php>
+            <li> <a href="<{:SITE_INDEX}>ServerChanpin/zituanlist/listtype/<{$v[listtype]}>/departmentID/<{$v['systemID']}>">&nbsp;<span>|---<{$v['title']}></span></a> </li>
+            <php>}</php>
+          </ul>
+        </div>
+    
+  </div>
+<php>}</php>
+
+
+<php>if($pagetype == '营收'){</php>
+  <div id="leftColumn" style="margin-top:7px; width:160px;">
+        <div id="navtab_1" class="leftList">
+          <h3><span>组团部门</span></h3>
+          <ul id="ul_shortcuts">
+            <php>foreach($zutuanlist as $v){ if($v['title'] == '国内部-组团')continue;</php>
+            <li> <a href="<{:SITE_INDEX}>Chanpin/tongji/departmentID/<{$v['systemID']}>">&nbsp;<span><{$v['title']}></span></a> </li>
+            <php>}</php>
+            <php>foreach($zutuanlist as $v){ if($v['title'] != '国内部-组团')continue;</php>
+            <li> <a href="<{:SITE_INDEX}>Chanpin/tongji/departmentID/<{$v['systemID']}>">&nbsp;<span><{$v['title']}></span></a> </li>
+            <php>}</php>
+          </ul>
+          <h3><span>地接部门</span></h3>
+          <ul id="ul_shortcuts">
+            <php>foreach($dijielist as $v){</php>
+            <li> <a href="<{:SITE_INDEX}>Chanpin/tongji/departmentID/<{$v['systemID']}>">&nbsp;<span><{$v['title']}></span></a> </li>
+            <php>}</php>
+          </ul>
+          <h3><span>散客（联合体提供）</span></h3>
+          <ul id="ul_shortcuts">
+            <php>foreach($bumenlist as $v){</php>
+            <li> <a href="<{:SITE_INDEX}>Chanpin/tongji/departmentID/<{$v['systemID']}>">&nbsp;<span>|---<{$v['title']}></span></a> </li>
+            <php>}</php>
+          </ul>
+        </div>
+  </div>
+<php>}</php>
+
+
+<script>
+function shownavtab(s)
+{
+	if(s == 1){
+		var divRili = document.getElementById('navtab_1'); 
+		divRili.style.display = '';			
+		divRili = document.getElementById('navtab_2'); 
+		divRili.style.display = 'none';	
+		jQuery('#shownavtab_1').addClass('current');
+		jQuery('#shownavtab_2').removeClass('current');
+	}
+	if(s == 2){
+		var divRili = document.getElementById('navtab_2'); 
+		divRili.style.display = '';			
+		divRili = document.getElementById('navtab_1'); 
+		divRili.style.display = 'none';	
+		jQuery('#shownavtab_2').addClass('current');
+		jQuery('#shownavtab_1').removeClass('current');
+	}
+}
+</script>
+
+

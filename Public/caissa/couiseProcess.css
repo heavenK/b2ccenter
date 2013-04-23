@@ -1,0 +1,156 @@
+﻿#main{background:url(index_mainbg01.gif) repeat-y; }
+#main .bottom{height:4px;background:url(index_mainbg05.gif) no-repeat;clear:both; display:block; overflow:hidden;}
+.Process{ margin:45px 0 0 49px; height:461px;}
+.Process h1{ font-size:14px; color:#000;}
+.Process ul{ font-size:14px; font-weight:bold; color:#ff0000; line-height:24px; margin:35px 0 0 32px;}
+.Process span{ color:#000;}
+.Process_1,.Process_2{ font-weight:normal; color:#b5ab9d;}
+.Process_2{ margin-top:10px; color:#56392b;}
+.Process a:hover{ color:#ff0000; text-decoration:underline;}
+
+
+.map{padding:5px 0 5px 21px;}
+
+
+.lc_Signed{height:40px; border-left:1px solid #ebe9e4;border-right:1px solid #ebe9e4; background:url(p1.gif) repeat-x; }
+.lc_Signed_t,.Fill_t{ width:532px; height:40px; background:url(lc.jpg) left 40px; margin-left:5px; display:block; float:left;}
+.lc_Signed_w{ padding-top:10px;*padding-top:13px; display:block; padding-left:350px; float:left;}
+.lc_Signed img{ padding-left:12px;}
+.content{ margin:0 auto; width:960px;}
+.qr_x{width:910px; margin:0 auto;}
+.qr{ background:#ebe9e4; padding-bottom:20px;}
+.qr h1{ font-size:14px; color:#000; padding:10px;}
+.qr_1,.qr_2{ padding-bottom:14px; font-size:14px; font-weight:bold; line-height:24px; border-bottom:1px solid #816e59; }
+.qr_2 span{ margin-right:25px;}
+.qr_1 li{  font-weight:normal; padding-left:10px;}
+.qr_1 li span{ color:#000;}
+.qr_2{padding:26px 0 14px 0; border-bottom:none;}
+.qr_3{ width:893px; padding:15px 0 5px 15px; border:1px solid #816e59; background:#fff;}
+.qr_3 .qr_3_one{ width:650px;}
+.qr_3 .qr_3_two{ width:200px;}
+.qr_3 .qr_3_one,.qr_3 .qr_3_two{ float:left; display:block; height:24px;}
+.qr_4{ margin:10px 0; width:550px;line-height:32px;}
+.f1,.f2{font-family:Microsoft YaHei;color:#ff0000; z-index:9999}
+.f2{font-family:Constantia,Georgia;font-size:18px;}
+.hj,.fj,.rt{ margin:0 20px;}
+.an{ float:right; *margin-top:-32px;}
+.an a,.All_an a,.Deposit a,.Temporarily_pay a{ width:80px; height:32px; display:block; text-indent:-50px; overflow:hidden;}
+.fs{background:#ebe9e4;}
+.fs h1{height:25px;font-size:14px;color:#000;padding:5px 0 0 10px;}
+.Contact_1{ padding:28px 0 0 25px; font-weight:bold; }
+.Contact_2,.Contact_3{ font-weight:normal; padding:15px 0 32px 0; line-height:30px;}
+.Contact_2{  padding:15px 0 10px 0;}
+.Payment{ padding:10px 0 0 22px;border-top:1px solid #816e59; font-weight:bold;}
+.Payment_1{ margin:10px 0; *margin:5px 0;}
+.an a{background:url(an.gif) no-repeat 0 1px; }
+.All_an a{background:url(an.gif) no-repeat left -36px;}
+.Deposit a{background:url(an.gif) no-repeat left -71px;}
+.Payment_button{ padding:10px 0 23px 0; }
+.Payment_button span{ float:left; margin:0 15px 0 5px; }
+.Temporarily_pay a{background:url(an.gif) no-repeat left -107px;width:102px; height:32px; text-indent:-100px; margin-top:15px;}
+.Temporarily_pay_wz,.Temporarily_pay,.now_pay{ float:left;}
+.Temporarily{ padding:30px 0 38px 30px; line-height:24px; background:#ebe9e4; border-top:1px solid #816e59;}
+.Temporarily_pay_wz{ width:740px; margin-left:23px;}
+
+/*********确认提交订单——自由行国内产品***********/
+.qr_File{ width:430px; padding-bottom:50px;}
+.qr_File li{ float:left; width:210px; font-weight:normal; height:24px;}
+.qr_bt{ padding-top:25px; display:block;}
+.qr_5{ width:876px; border:1px solid #816e59; background:#fff; padding:1px 0 4px 1px;}
+.qr_5 table{ width:100%;}
+.qr_6,.qr_7{ height:20px; background:#f3f0e9; padding:3px 0 0 8px;}
+.qr_6 li,.qr_7 li{ float:left;}
+.qr_6_title1{ width:240px;}
+.qr_6_title2{ width:288px;}
+.qr_6_title3{ width:162px;}
+
+.qr_7{ background:#fff;}
+.qr_an a{width:80px; height:32px; display:block; text-indent:-50px; overflow:hidden;background:url(an.gif) left -145px; margin:0 auto;}
+.qr_an{ margin-bottom:30px;}
+
+/*********非登陆状态********/
+/*登录框*/
+.fd_bj{ width:975px; background:url(bj.jpg) repeat-x; margin:0 auto; padding:30px 3px 164px 3px;}
+.Login_General{ float:left;width:314px; height:307px; border:1px solid #dfdfdf; margin-left:7px; _margin-left:5px; background:#fff; padding:1px; }
+.Login_General_bj{background:url(bj.jpg) repeat-x;height:307px;}
+.Login_title{ background:url(fdl.jpg) 0 -79px; height:35px; width:314px;}
+.Input{ margin:22px 0 0 37px; width:240px;}
+.Input_1,.Input_2,.Input_3{ width:126px; height:21px; background:url(fdl.jpg) no-repeat 0 0; border:none; padding:3px 0 0 5px; color:#b5ab9d;}
+.Input_3{ background:url(fdl.jpg) no-repeat 0 -30px;width:62px;}
+.Input_4{width:125px; float:left;}
+.Input span{ margin-bottom:12px; display:block;}
+.Input_img{ border:1px solid #dfdfdf; width:57px; height:22px; float:left; *margin-top:1px;}
+.Input_wz{ display:block; float:right; padding:8px 14px 0 0;}
+.Login_{ margin:15px 0 0 90px;*margin:0 0 0 90px; width:200px;}
+.Login_an{ float:left;}
+.Login_an a{ background:url(an.gif) no-repeat left -182px; width:80px; height:33px; text-indent:-50px; display:block;}
+.wjmm{ float:left; display:block; margin:12px 0 0 5px;}
+
+/*注册*/
+.Login_Up{ background:url(fdl.jpg) 0 -115px; height:35px; width:314px;}
+.Input_5{width:135px; float:left;}
+.Input_Upwz{ display:block; float:right; padding:8px 6px 0 0;}
+.Input_Upimg{ border:1px solid #dfdfdf; width:57px; height:22px; float:left; *margin:1px 0 0 3px;}
+.Login_qr{ float:left; margin-left:38px; *margin-left:35px;}
+.Login_qr2{ float:left; margin:10px 0 0 65px; *margin-left:68px;}
+.Login_qr a,.Direct_2 a{ background:url(an.gif) no-repeat left -145px; width:80px; height:33px; text-indent:-50px; display:block; overflow:hidden;}
+
+/*直接预定*/
+.Login_1,.Direct{ float:left; width:308px; height:307px; border:1px solid #dfdfdf; margin-left:7px; background:#fff; padding:1px;}
+.Login_2{ background:url(fdl.jpg) 0 -151px; height:35px; width:306px;}
+.Direct{ width:304px;}
+.Direct_1{ padding:59px 81px 0 81px;}
+.Direct_2{ margin:10px auto; width:80px; height:33px;}
+.Direct_2 a{background:url(an.gif) no-repeat left -219px;}
+.Direct_wz{ margin:10px auto; width:275px;}
+.Direct_wz stong,.Direct_wz span{ float:left}
+.Direct_wz span{ text-indent:20px;}
+
+
+/**********填写订单信息(参团游)*************/
+.Fill_orders span{ color:#ff0000; font-weight: bold; font-size:18px; padding:0 2px;}
+.Fill_orders h1{height:25px;font-size:14px;color:#000;padding:5px 0 0 10px;background:#ebe9e4;}
+.Fill_t{background:url(lc.jpg) left -40px;}
+.Travel{ float:left; *padding-top:2px;}
+.Count{ width:40px; height:17px; background: url(tx.jpg) no-repeat;padding:2px; overflow:hidden; float:left; margin:0 5px;}
+.Count_left,.Count_right{ width:9px; height:17px;display:block;}
+.Count_left{ float: left;background:url(tx.jpg) -49px top no-repeat;}
+.Count_right{ float:right; background:url(tx.jpg) -63px top no-repeat;}
+.Count strong{float:left; margin:-2px 0 0 5px; }
+.Count_left a,.Count_right a{width:9px; height:17px; background:url(tx.jpg) -49px top no-repeat; display:block; float:left; text-indent:-30px; overflow:hidden;}
+.Count_right a{float:right; background:url(tx.jpg) -63px top no-repeat;text-indent:30px;}
+.Travel_x{ padding:20px 0;}
+.Units{ *padding:2px; display:block; float:left;}
+.Travel_1,.Travel_2,.Travel_3{ float:left; width:160px; margin-left:8px; }
+.Travel_3{ width:325px;}
+.hj_Count{ margin:0 10px;}
+.Check{ float:left; margin:4px 2px 0 2px; *margin:-2px 0 0 0;}
+
+
+.Fill{ padding-top:30px; width:400px;}
+.Fill_wz{ text-align:right; float:left; width:110px; height:22px; padding-top:8px; }
+.Fill_Input_1,.Fill_Input_2{ width:131px; height:24px; background:url(tx.jpg) left -50px no-repeat; overflow:hidden; margin:0 0 0 15px; padding-left:2px; *padding-left:5px; border:none;}
+.Fill_Input_2{ width:216px;background:url(tx.jpg) left -23px no-repeat;}
+.Fill_Input_x{ padding:7px 0;}
+.Fill_Input_nn{ padding:2px 0 0 15px ;}
+.Fill_nn_title{padding:10px 0 0 0;text-align:right; float:left; width:110px; height:22px;}
+.Fill span{ font-size:14px; font-weight:normal;}
+.Fill_an{ padding:10px 0 0 125px; _padding-left:128px; float:left;width:79px; height:33px;}
+.Fill_an a{ text-indent:-50px; overflow:hidden; display:block;width:79px; height:33px; background:url(an.gif) no-repeat left -145px;}
+
+.Statement li{ list-style:none;}
+.Statement{ height:auto;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

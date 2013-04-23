@@ -1,0 +1,97 @@
+
+/**************参团游日历表：start*******************/
+.tab{height:25px; background:url(./tab01_bg.gif) 0 0 repeat-x;}
+.tab ul{ display:block;}
+.tab li{ float:left; height:25px; text-align:center; width:64px; cursor:pointer; line-height:25px;}
+.tab li.curr{ border:1px solid #816e59; background:#fff; font-weight:bold;}
+.tab_cont .Calendar{ display:none;}
+.tab_cont .Calendar{ width:388px; height:344px; border:1px solid #816e59; border-top:none;}
+.tab_cont .Calendar table{ width:100%;}
+.tab_cont .Calendar td{ border:1px solid #fff; vertical-align:top; width:50px; height:52px; padding:1px 0 0 3px; height:50px\9;}
+.tab_cont .Calendar td.bg01{ background-color:#d0cbbe;}
+.tab_cont .Calendar td.bg02{ background-color:#e2dfd8;}
+.tab_cont .Calendar th{ background-color:#816e59; color:#fff; text-align:center; border:1px solid #fff; font-weight:normal; padding:5px 0;} 
+.tab_cont .Calendar td.has_pro{ color:#ff0000; font-weight:bold;}
+.position_right .Calendar td.has_pro a{ color:#ff0000; text-decoration:underline;}
+.tab_cont .Calendar td.has_pro .pro_state{ display:block; width:25px; height:14px; background:url(./calendar_bg.gif) 0 -48px no-repeat; float:right; color:#fff; line-height:14px; line-height:15px\9; margin:4px 2px 0 0; font-weight:normal; *margin-top:-16px; text-align:center;}
+.tab_cont .Calendar td.has_pro .pro_price{ display:block; text-align:right; height:14px; padding-right:2px; line-height:14px; }
+.tab_cont .Calendar td.has_pro .detail_data{ display:block; text-align:right; height:14px; line-height:14px; padding-right:2px; color:#ff0000; font-weight:normal; }
+.tab_cont .Calendar td.curr .pro_state{ background-position:0 -69px; color:#ff0000;}
+.tab_cont .Calendar td.curr .pro_price em{ color:#fff;}
+.tab_cont .Calendar td.curr .detail_data{ color:#fff;}
+.tab_cont .Calendar td.curr{ background-color:#ff0000; color:#fff;}
+.tab_cont .Calendar td.current .pro_state{ background-position:0 -71px; color:#ff0000;}
+.tab_cont .Calendar td.current .pro_price em{ color:#fff;}
+.tab_cont .Calendar td.current .detail_data{ color:#fff;}
+.tab_cont .Calendar td.current{ background-color:#ff0000; color:#fff;}
+.position_right .select_03{ background-color:#f0efeb; height:68px; margin-top:8px;}
+.position_right .select_03 div{ display:inline;  float:left;  margin:3px 0 0 10px;}
+.position_right .select_03 div span{display:block;}
+.position_right .select_03 div a{display:block; font-weight:bold;}
+.position_right .select_03 .book_03{ float:right; display:block; width:80px; height:30px; background:url(./yuding.gif) 0 0 no-repeat; margin:18px 15px 0 0; _margin-right:7px;}
+/**************参团游日历表：end*******************/
+
+/**************日历表：start*******************/
+.position_right .Calendar{ width:388px; height:353px\9;}
+.position_right .Calendar table{ width:100%;}
+.position_right .Calendar td{ border:1px solid #fff; vertical-align:top; width:50px; height:52px; padding:1px 0 0 3px;}
+.position_right .Calendar td.bg01{ background-color:#d0cbbe;}
+.position_right .Calendar td.bg02{ background-color:#e2dfd8;}
+.position_right .Calendar th{ background-color:#816e59; color:#fff; text-align:center; border:1px solid #fff; font-weight:normal; padding:5px 0;} 
+.position_right .Calendar .title td{ background-color:#fff; text-align:left;width:386px; height:29px; line-height:29px; overflow:hidden;}
+.position_right .Calendar .title td .calen_prev{ margin-left:35px; width:30px; padding-left:10px; background:url(./calendar_bg.gif) 3px 9px no-repeat; font-size:14px; cursor:pointer; color:#000; text-align:center;}
+.position_right .Calendar .title td .calen_center{font-size:14px; text-align:center; width:120px;}
+.position_right .Calendar .title td .calen_next{ padding-right:10px; background:url(./calendar_bg.gif) 31px -13px no-repeat; font-size:14px; cursor:pointer; color:#000; width:30px; text-align:center;}
+.position_right .Calendar .title span{ float:left; display:block;}
+.position_right .Calendar .title .calendar_name{ font-weight:bold; font-size:14px;}
+.position_right .Calendar td.has_pro{ color:#ff0000; font-weight:bold;}
+.position_right .Calendar td.has_pro .pro_state{ display:block; width:25px; height:14px; background:url(./calendar_bg.gif) 0 -48px no-repeat; float:right; color:#fff; line-height:14px; line-height:15px\9; margin:4px 2px 0 0; font-weight:normal; *margin-top:-16px; text-align:center;}
+.position_right .Calendar td.has_pro .pro_price{ display:block; text-align:right; height:14px; padding-right:2px; line-height:14px; }
+.position_right .Calendar td.has_pro .detail_data{ display:block; text-align:right; height:14px; line-height:14px; padding-right:2px; color:#ff0000; font-weight:normal; }
+.position_right .Calendar td.curr .pro_state{ background-position:0 -71px; color:#ff0000;}
+.position_right .Calendar td.curr .pro_price em{ color:#fff;}
+.position_right .Calendar td.curr .detail_data{ color:#fff;}
+.position_right .Calendar td.curr{ background-color:#ff0000; color:#fff;}
+.position_right .Calendar td.current .pro_state{ background-position:0 -71px; color:#ff0000;}
+.position_right .Calendar td.current .pro_price em{ color:#fff;}
+.position_right .Calendar td.current .detail_data{ color:#fff;}
+.position_right .Calendar td.current{ background-color:#ff0000; color:#fff;}
+.position_right .select_02{ background-color:#f0efeb; padding:15px 0; margin-top:9px;}
+.position_right .select_02 .book_02{ display:block; width:80px; height:30px; background:url(./yuding.gif) 0 0 no-repeat; margin-left:155px;}
+/**************日历表：end*******************/
+
+/*****************参团游产品详情页弹出框******************/
+#Popupbox_bg{ background-color:#000; display:none; position:absolute; z-index:99; width:100%; height:100%; top:0; left:0;}
+#Popupbox{ position:absolute; width:600px; display:none;  background-color:#fff; z-index:999;padding-bottom:20px;}
+#Popupbox .shutdown{ display:block; background:url(./shutdown.gif) 26px 5px no-repeat; float:right; padding-right:13px; margin:4px 6px 0 0; cursor:pointer; background-position:26px 3px\9;}
+#Popupbox .select_01{padding:20px 15px;}
+#Popupbox .select_01 select{width:100%;}
+#Popupbox .pro_table table{ width:100%;}
+#Popupbox .pro_table td,#Popupbox .pro_table th{ border:1px solid #8a673f; padding:4px 0; font-weight:normal;}
+#Popupbox .pro_table th{ background-color:#ece9e4;}
+#Popupbox .pro_table{ padding:10px 15px; text-align:center;}
+#Popupbox .stastics{ text-align:center; padding-top:10px;}
+#Popupbox .nextstep{ text-align:center; padding:25px 0 0 0;}
+#Popupbox ul{ margin-left:80px; _margin-left:60px;}
+#Popupbox ul li{ line-height:24px; float:left; margin:6px 18px;}
+#Popupbox ul li.pwidth{width:85px;margin-right:0;}
+#Popupbox ul li.pwidth2{width:60px;margin-left:0;}
+#Popupbox ul li .piaohong{ color:#F00; font-weight:bold; font-family:Microsoft YaHei;}
+#Popupbox ul li span{ display:block; float:left;}
+#Popupbox ul li span.add_count{ position:relative;}
+#Popupbox ul li span.add_count .less{ position:absolute; top:1px; left:1px; display:block; width:9px; height:17px; cursor:pointer; background:url(./addcount.jpg) 0 0 no-repeat;}
+#Popupbox ul li span.add_count .add{ position:absolute; top:1px; right:1px; display:block; width:9px; height:17px; cursor:pointer;background:url(./addcount.jpg) -31px 0 no-repeat;}
+#Popupbox ul li span.add_count{ width:42px; height:19px; text-align:center; border:1px solid #8a673f; }
+#Popupbox ul li span.add_count input{ width:20px; height:17px; *line-height:12px!important; line-height:18px; _line-height:17px;  text-align:center; border:none; background:none; font-weight:bold;}
+.tuanhao{color: #816e59;font-weight: bold;padding-left: 14px;}
+.pro_table th em{ padding-right:18px; background:url(./fuceng_fuhao.gif) right 0 no-repeat; width:16px; height:16px;}
+.pro_table th em.getred_bg{ background-position:right -16px;}
+.pro_table th div{position:absolute; padding:20px; border:1px solid #534135; margin:0 80px 0 -80px; background:#fff; z-index:100; text-align:left; width:300px;display:none;}
+.pro_table th div p{ margin-top:8px;}
+.heji{ width:395px; margin:0 auto; padding-top:20px;}
+.heji table{ width:100%;}
+.heji table td{ padding:3px 0;}
+.youqingtips{ width:464px; margin:0 auto; margin-top:15px; background-color:#eae9e4; padding:15px 18px;}
+.youqingtips p{ line-height:24px;}
+.youqingtips .zixi{ text-align:center; display:block; margin-top:5px;}
+.youqingtips input{ _margin-bottom:3px;}

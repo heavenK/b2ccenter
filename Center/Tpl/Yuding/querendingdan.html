@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>确认并提交订单（参团游）-支付流程-凯撒旅游网</title>
+<link href="<{:__PUBLIC__}>/caissa/style.css" rel="stylesheet" type="text/css">
+<link href="<{:__PUBLIC__}>/caissa/index_hf.css" rel="stylesheet" type="text/css">
+<link href="<{:__PUBLIC__}>/caissa/couiseProcess.css" rel="stylesheet" type="text/css">
+<script src="<{:__PUBLIC__}>/caissa/jquery-1.4.1.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+  <div class="qr">
+    <h1> 确认订单信息</h1>
+    <div class="qr_x">
+      <div class="qr_1"> 尊敬的客人：
+        <ul>
+          <li>您好，您的订单申请已提交，订单号：<span>W201212270031534</span>！</li>
+          <li>感谢您关注凯撒旅游网最新产品信息！如有疑问，您可以直接致电010—85906636咨询相关事宜。</li>
+        </ul>
+      </div>
+      <div class="qr_2"> 订单号：W201212270031534
+        &nbsp;&nbsp;&nbsp;&nbsp;产品名称：<{$data['title']}>
+        &nbsp;&nbsp;&nbsp;&nbsp;出发城市:北京
+        &nbsp;&nbsp;&nbsp;&nbsp;出发时间:2013-02-09</div>
+      <div class="qr_3"> <span class="qr_3_one">产品名称：以色列约旦10日探寻之旅</span><span class="qr_3_two">产品类型：观光型</span><span class="qr_3_one">出团编号：CAI2013-PEK0230PEK0230-1000257 </span><span class="qr_3_two">出发日期：
+        2013-02-09 </span><span class="qr_3_one">行程天数：10日</span><span class="qr_3_two">出
+        发 地：
+        北京 </span> </div>
+      <div class="Travel_x"> <strong>出行人数：</strong><br>
+        <div class="Travel_1">
+          <div class="Travel"> 成人&nbsp;<strong>1</strong>&nbsp;人</div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="hj_Count"> 合计：<span class="f1">￥</span><span class="f2">19999</span></span> </div>
+    </div>
+  </div>
+  <div class="hr_10"> </div>
+  <form id="form1" action="http://s.caissa.com.cn/o/Order/Pay/0" method="post">
+    <div class="fs">
+      <h1> 联系方式及付款方式</h1>
+      <div class="Contact_1">
+        <div class="qr_File">
+          <ul>
+            <li><strong>联系人：</strong>234324</li>
+            <li><strong>性别：</strong>女</li>
+            <li><strong>身份证号：</strong>234234</li>
+            <li><strong>手机号：</strong>12313131313</li>
+            <li><strong>电子邮箱：</strong>234234@111.aa</li>
+            <li><strong>就近报名城市：</strong>大连</li>
+          </ul>
+        </div>
+        为方便您及时保存订单信息：
+        <div class="Contact_2">
+          <p>
+            <label>
+              <input checked="checked" id="radContactType" name="radContactType" type="radio" value="1">
+              &nbsp;&nbsp;请通过手机短信发送给我</label>
+            <label style="padding-left: 45px;">
+              <input id="radContactType" name="radContactType" type="radio" value="2">
+              &nbsp;&nbsp;请通过E-mail邮箱发送给我</label>
+            <br>
+          </p>
+        </div>
+        为及时电话回复您，可以在：
+        <div class="Contact_3">
+          <p>
+            <label>
+              <input id="radContactTime" name="radContactTime" type="radio" value="1">
+              &nbsp;&nbsp;工作时间联系我(9：00-18：00)</label>
+            <label style="padding-left: 10px;">
+              <input id="radContactTime" name="radContactTime" type="radio" value="2">
+              &nbsp;&nbsp;休息时间联系我(18：00-21：00)</label>
+            <label style="padding-left: 10px;">
+              <input checked="checked" id="radContactTime" name="radContactTime" type="radio" value="3">
+              &nbsp;&nbsp;随时都可以联系我</label>
+            <br>
+          </p>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div> <span class="an"><a style="cursor: pointer" onclick="PaySubmit(0)">立即支付</a></span> </div>
+      <div class="Temporarily"> <span class="Temporarily_pay"><a style="cursor: pointer" onclick="NoPaySubmit()">确认暂不支付</a></span><span class="Temporarily_pay_wz">如果您选择此项服务，我们将按照您所指定的联系方式和时间要求尽快回复您。但由于网上订单提交并未最终完成出团名额预订，因此为确保我们为您预留出团名额，请选择网上支付。感谢您使用凯撒旅游网产品在线预订系统。</span></div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

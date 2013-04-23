@@ -1,0 +1,112 @@
+
+<tp:includeCA file="Index:showheader" />
+
+<script language="javascript" type="text/javascript" src="<{:__PUBLIC__}>/gulianstyle/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<{:__PUBLIC__}>/myerp/Chanpin/xianlu.js"></script>
+<div id="main">
+
+  <div id="content" style="margin-left:5px; padding-left:0px; border-left:none">
+  
+            <div id="resultdiv" class="resultdiv"></div>
+            <div id="resultdiv_2" class="resultdiv"></div>
+            
+            <include file="Index:search_dingdan" />
+            
+            
+    <div id="mysearchdiv" style="margin:10px 0 0 0;">
+      <ul id="searchTabs" class="tablist tablist_2">
+        <li> <a 
+          <php>if($markpos == ''){</php>
+          class="current"
+          <php>}</php>
+          href="<{:SITE_INDEX}>ServerDingdan/dingdanlist">全部</a> </li>
+        <li> <a 
+          <php>if($markpos == '已支付'){</php>
+          class="current"
+          <php>}</php>
+          href="<{:SITE_INDEX}>ServerDingdan/dingdanlist/status/已支付">已支付</a> </li>
+        <li> <a 
+          <php>if($markpos == '等待支付'){</php>
+          class="current"
+          <php>}</php>
+          href="<{:SITE_INDEX}>ServerDingdan/dingdanlist/status/等待支付">等待支付</a> </li>
+      </ul>
+    </div>
+    
+            
+            <table cellpadding="0" cellspacing="0" width="100%" class="list view">
+              <tbody>
+              
+                <tr class="pagination">
+                  <td colspan="11">
+                  <table cellpadding="0" cellspacing="0" width="100%" class="paginationTable">
+                      <tbody>
+                        <tr>
+                          <td nowrap="nowrap" align="right" class="paginationChangeButtons" style="color:#090"><{$page}></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </td>
+                </tr>
+                
+                <tr height="20">
+                  <th scope="col" nowrap="nowrap"><div> ID </div></th>
+                  <th scope="col" nowrap="nowrap" style="min-width:300px; width:30%;"><div> 团名/团期 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 联系人 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 联系电话 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 身份证 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 成人/儿童 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 团费 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 状态 </div></th>
+                  <th scope="col" nowrap="nowrap"><div> 时间 </div></th>
+                </tr>
+                
+                <php> $i = -1; foreach($chanpin_list as $v){ $i++;</php>
+                <tr style="cursor:pointer" height="40" class="evenListRowS1" onclick="showinfo(<{$v['chanpinID']}>)">
+                  <td scope="row" align="left" valign="top"><{$v['chanpinID']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['title']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['lianxiren']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['telnum']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['lxr_sfz']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['chengrenshu']}>/<{$v['ertongshu']}></td>
+                  <td scope="row" align="left" valign="top"><{$v['jiage']}></td>
+                  <td scope="row" align="left" valign="top" style="color:#4e8ccf"><{$v['status']}></td>
+                  <td scope="row" align="left" valign="top"><php>echo date('Y/m/d H:i',$v['time'])</php></td>
+                </tr>
+                <php> }</php>
+                
+                <tr class="pagination">
+                  <td colspan="11">
+                  <table cellpadding="0" cellspacing="0" width="100%" class="paginationTable">
+                      <tbody>
+                        <tr>
+                          <td nowrap="nowrap" align="right" class="paginationChangeButtons" style="color:#090"><{$page}></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+            
+  </div>
+  
+  
+  
+</div>
+
+<tp:includeCA file="Index:footer" />
+
+<script language="javascript"> 
+
+function showinfo(chanpinID){
+	window.open('<{:SITE_INDEX}>ServerDingdan/dingdanxinxi/chanpinID/'+chanpinID);
+}
+
+function dosearch(str){
+		window.location = SITE_INDEX+'ServerDingdan/dingdanlist'+str;
+}
+
+</script>
+
+
