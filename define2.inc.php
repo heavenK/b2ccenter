@@ -1,20 +1,19 @@
 <?php
-
-    // global config
-    define('ET_URL','http://'.$_SERVER['HTTP_HOST'].'/');
+	//全局
+    define('CLIENT_INDEX',CLIENT_URL.'index.php?s=/');
+	//常用定义
     define('SITE_INDEX',ET_URL.'index.php?s=/');
     define('SITE_DATA',ET_URL.'Data/');
-	
+	//
     define('LOGIN_TIME_REMEMBER', 3600 * 24 * 30);
     define('LOGIN_TIME', 3600 * 6);
     define('LOGIN_TIME_FAILE', 60 * 10);
-	
 	//线路主栏目ID
-    define('XIANLU_TYPEID', 14);
+    define('A_XIANLU_TYPEID', 14);
 	//线路频道模型ID
-    define('XIANLU_CHANNEL', 18);
+    define('A_XIANLU_CHANNEL', 7);
 	//线路附表ID
-    define('XIANLU_ADDONARTICLE', 'glly_addonarticle18');
+    define('A_XIANLU_ADDONARTICLE', 'cty_addon7');
 //	//商品子团栏目ID
 //    define('ZITUAN_TYPEID', 25);
 //	//商品子团频道模型ID

@@ -164,7 +164,7 @@ class ServerMethodAction extends CommonAction{
 		$mid =  0;//会员ID
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '$chanpinID'")->find();
 		//线路文章
-		$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,XIANLU_TYPEID,XIANLU_CHANNEL);
+		$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
 	}
 	
 	
@@ -194,6 +194,7 @@ class ServerMethodAction extends CommonAction{
 		$addonarticle['aid'] =  $arctinyID;//文章ID
 		$addonarticle['body'] =  $xianlu;
 		$addonarticle['typeid'] =  $archives['typeid'];
+		$addonarticle['serverdataid'] =  $xianlu['chanpinID'];//服务器ID
 		if($addonarticleModel == 'DEDEAddonarticleZituan'){
 			$addonarticle['chutuanriqi'] =  $zituan['chutuanriqi'];
 			$addonarticle['tuanhao'] =  $zituan['tuanhao'];

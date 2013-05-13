@@ -1,6 +1,6 @@
 <?php
 class DEDEAddonarticleXianluModel extends DEDEConfigModel {
-	protected $trueTableName=XIANLU_ADDONARTICLE;
+	protected $trueTableName=A_XIANLU_ADDONARTICLE;
 	protected $pk = 'id';	
 
    // 自动验证设置

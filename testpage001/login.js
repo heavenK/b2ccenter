@@ -8,7 +8,7 @@ function judge(method) {
     success_method = method;
 	url = 'http://www.myerpcenter.com/index.php?s=/Server/getinfo';
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-		   if (data.uid > 0) {
+		   if (data.uid < 0) {
 			   //ÒÑµÇÂ¼
 			   eval(method);
 		   } else {

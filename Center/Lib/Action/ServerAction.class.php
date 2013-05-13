@@ -7,12 +7,19 @@ class ServerAction extends Action{
     public function dopostchanpin() {
 		//链接服务器生成
 		$clientdataID = $_REQUEST['chanpinID'];
-		$xianlu = file_get_contents("http://www.myerptest.com/index.php?s=/Client/_getxianlu/chanpinID/".$clientdataID);
-		$xianlu = str_replace('﻿','',$xianlu);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$xianlu = unserialize($xianlu);
+		$xianlu = FileGetContents(CLIENT_INDEX."Client/_getxianlu/chanpinID/".$clientdataID);
+		$getres = json_decode($serverdataID,true);
+		if($getres['error']){
+			$returndata['msg'] = $getres['msg'];
+			$returndata['error'] = 'true';
+			echo json_encode($returndata);
+			exit;
+		}
 		if($xianlu['serverdataID']){
-			echo 'false';
-			return;
+			$returndata['msg'] = "客户端产品获得失败！";
+			$returndata['error'] = 'true';
+			echo json_encode($returndata);
+			exit;
 		}
 		$Chanpin = D("Chanpin");
 		$newdata['xianlu'] = $xianlu;
@@ -49,8 +56,8 @@ class ServerAction extends Action{
 				$Chanpin->relation("zituan")->myRcreate($zituan);
 			}
 			//同步生成到dede
-			A("Server")->_updatetocms($chanpinID);
-			echo $chanpinID;	
+			A("ServerMethod")->_updatetocms($chanpinID);
+			echo serialize($chanpinID);	
 		}
 		else
 			echo 'false';
@@ -124,11 +131,6 @@ class ServerAction extends Action{
 	}
 	
 	
-	
-	
-	
-	
-	
 	//检查用户登录
     public function getinfo() {
 		$json['uid'] = 1;
@@ -137,13 +139,6 @@ class ServerAction extends Action{
 	
 	}
 	
-	
-	
-	
-    public function test11() {
-			A("ServerMethod")->_updatetocms(131);
-
-	}
 	
 	
 	
@@ -169,31 +164,31 @@ class ServerAction extends Action{
 	//数据返回信息包含：1，data子团信息，包括erp查询码。2.line子团显示页面数据。3.other相关产品信息。4.status标识线路报名状态
 	//groupid标识group,group为data的一维数组。
 		
-$aaa['data'][0]['groupid'] = '11111';
-$aaa['data'][0]['date'] = '2013-02-07';
-$aaa['data'][0]['enddate'] = '2013-02-07';
-$aaa['data'][0]['renshu'] = '3';
-$aaa['data'][0]['adult_price'] = '222222';
-$aaa['data'][0]['child_price'] = '33333333';
-$aaa['data'][0]['lineid'] = '38845';
-$aaa['data'][0]['erpno'] = 'CAI2013-PEK0120PEK0120-1000647';
-$aaa['data'][1]['groupid'] = '2222';
-$aaa['data'][1]['date'] = '2013-02-11';
-$aaa['data'][1]['enddate'] = '2013-02-11';
-$aaa['data'][1]['renshu'] = '3';
-$aaa['data'][1]['adult_price'] = '5555555';
-$aaa['data'][1]['child_price'] = '666666666';
-$aaa['data'][1]['lineid'] = '38845';
-$aaa['data'][1]['erpno'] = '543424234';
-$aaa['line'][0]['id'] = '38845';
-$aaa['line'][0]['url'] = 'http://www.caissa.com.cn/201211/38845.shtml';
-$aaa['line'][1]['id'] = '38845';
-$aaa['line'][1]['url'] = 'http://www.caissa.com.cn/201211/38845.shtml';
-$aaa['other'] = array();
-$aaa['status'] = 1;
-$aaa = json_encode($aaa);
-
-echo  $_GET['jsoncallback'].'('.$aaa.')';
+		$aaa['data'][0]['groupid'] = '11111';
+		$aaa['data'][0]['date'] = '2013-02-07';
+		$aaa['data'][0]['enddate'] = '2013-02-07';
+		$aaa['data'][0]['renshu'] = '3';
+		$aaa['data'][0]['adult_price'] = '222222';
+		$aaa['data'][0]['child_price'] = '33333333';
+		$aaa['data'][0]['lineid'] = '38845';
+		$aaa['data'][0]['erpno'] = 'CAI2013-PEK0120PEK0120-1000647';
+		$aaa['data'][1]['groupid'] = '2222';
+		$aaa['data'][1]['date'] = '2013-02-11';
+		$aaa['data'][1]['enddate'] = '2013-02-11';
+		$aaa['data'][1]['renshu'] = '3';
+		$aaa['data'][1]['adult_price'] = '5555555';
+		$aaa['data'][1]['child_price'] = '666666666';
+		$aaa['data'][1]['lineid'] = '38845';
+		$aaa['data'][1]['erpno'] = '543424234';
+		$aaa['line'][0]['id'] = '38845';
+		$aaa['line'][0]['url'] = 'http://www.caissa.com.cn/201211/38845.shtml';
+		$aaa['line'][1]['id'] = '38845';
+		$aaa['line'][1]['url'] = 'http://www.caissa.com.cn/201211/38845.shtml';
+		$aaa['other'] = array();
+		$aaa['status'] = 1;
+		$aaa = json_encode($aaa);
+		
+		echo  $_GET['jsoncallback'].'('.$aaa.')';
 
 	}
 }
