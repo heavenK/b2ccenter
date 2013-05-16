@@ -66,27 +66,23 @@ class ServerAction extends Action{
 	//线路
     public function getxianlubyID() {
 		$erpxianluID = $_REQUEST['erpxianluID'];
-		
-		if(!$erpxianluID)
-			$erpxianluID = 24;
+		if(!$erpxianluID){
+			$json['error'] = true;
+			$json['msg'] = '该线路不存在';
+		}
 		$ViewXianlu = D("ViewXianlu");
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '$erpxianluID'")->find();
 		$i = 0;
 		foreach($xianlu['zituanlist'] as $v){
-			$json['data'][$i]['groupid'] = $v['chanpinID'];
+			$json['data'][$i]['chanpinID'] = $v['chanpinID'];
 			$json['data'][$i]['date'] = $v['chutuanriqi'];
 			$json['data'][$i]['enddate'] = jisuanriqi($v['chutuanriqi'],$v['baomingjiezhi'],'减少');
 			$json['data'][$i]['renshu'] = $v['renshu'];
 			$json['data'][$i]['adult_price'] = $v['adult_price'];
 			$json['data'][$i]['child_price'] = $v['child_price'];
-			$json['data'][$i]['lineid'] = $v['parentID'];
-			//$json['data'][$i]['erpno'] = $v['bianhao'];
-			$json['line'][$i]['id'] = $v['chanpinID'];
-			$json['line'][$i]['url'] = 'http://xxx';
+			$json['data'][$i]['erpno'] = $v['bianhao'];
 			$i++;
 		}
-		$json['other'] = array();
-		$json['status'] = 1;
 		$json = json_encode($json);
 		echo  $_GET['jsoncallback'].'('.$json.')';
 	}
