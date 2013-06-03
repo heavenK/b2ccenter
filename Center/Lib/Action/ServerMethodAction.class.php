@@ -179,6 +179,10 @@ class ServerMethodAction extends CommonAction{
 		$arctiny['channel'] =  $channel;//频道模型
 		$arctiny = $DEDEArctiny->create($arctiny);
 		$arctinyID = $DEDEArctiny->add();//自增型主键，可获得ID
+		
+		dump($arctinyID);
+		dump($DEDEArctiny);
+		
 		//添加文章主表
 		$archives['title'] = $xianlu['title'];//标题
 		$archives['shorttitle'] =  $xianlu['zhuti'];//简略标题
