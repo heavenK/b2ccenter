@@ -195,6 +195,13 @@ class ServerMethodAction extends CommonAction{
 		$addonarticle['body'] =  $xianlu;
 		$addonarticle['typeid'] =  $archives['typeid'];
 		$addonarticle['serverdataid'] =  $xianlu['chanpinID'];//服务器ID
+		
+		$addonarticle['jiage'] =  $xianlu['shoujia'];
+		$addonarticle['chufariqi'] =  $xianlu['chutuanriqi'];
+		$addonarticle['chufachengshi'] =  $xianlu['chufadi'];
+		//$addonarticle['mudidi'] =  $xianlu['mudidi'];
+		$addonarticle['tianshu'] =  $xianlu['tianshu'];
+		
 		if($addonarticleModel == 'DEDEAddonarticleZituan'){
 			$addonarticle['chutuanriqi'] =  $zituan['chutuanriqi'];
 			$addonarticle['tuanhao'] =  $zituan['tuanhao'];
