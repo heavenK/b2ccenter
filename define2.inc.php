@@ -9,7 +9,7 @@
     define('LOGIN_TIME', 3600 * 6);
     define('LOGIN_TIME_FAILE', 60 * 10);
 	//线路主栏目ID
-    define('A_XIANLU_TYPEID', 14);
+    define('A_XIANLU_TYPEID', 17);
 	//线路频道模型ID
     define('A_XIANLU_CHANNEL', 7);
 	//线路附表ID
