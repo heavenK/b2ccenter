@@ -92,7 +92,7 @@ class ServerChanpinAction extends Action{
 		$mid =  0;//会员ID
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '156'")->find();
 		//线路文章
-		$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
+		A("ServerMethod")->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
 		
 	}
 	
