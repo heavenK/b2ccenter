@@ -214,6 +214,19 @@ class ServerMethodAction extends CommonAction{
 	
 	
 	
+	//文章流程
+	public function testdede() {
+		C('TOKEN_ON',false);
+		$ViewXianlu = D("ViewXianlu");
+		$mid =  0;//会员ID
+		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '156'")->find();
+		dump($xianlu);
+		exit;
+		//线路文章
+		$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
+		
+	}
+	
 	
 	
 	
