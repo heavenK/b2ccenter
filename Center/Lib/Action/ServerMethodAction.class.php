@@ -199,7 +199,7 @@ class ServerMethodAction extends CommonAction{
 		$addonarticle['jiage'] =  $xianlu['shoujia'];
 		$addonarticle['chufariqi'] =  $xianlu['chutuanriqi'];
 		$addonarticle['chufachengshi'] =  $xianlu['chufadi'];
-		//$addonarticle['mudidi'] =  $xianlu['mudidi'];
+		$addonarticle['mudidi'] =  $xianlu['mudidi'];
 		$addonarticle['tianshu'] =  $xianlu['tianshu'];
 		
 		if($addonarticleModel == 'DEDEAddonarticleZituan'){
