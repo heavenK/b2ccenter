@@ -21,10 +21,18 @@ class ServerAction extends Action{
 			echo json_encode($returndata);
 			exit;
 		}
+		//获得客户端操作记录
+		$record = FileGetContents(CLIENT_INDEX."Client/_getActHistory/dataID/".$clientdataID."/datatype/线路/status/提交到网店");
+		if(!$record){
+			$returndata['msg'] = "客户端记录获取失败！";
+			$returndata['error'] = 'true';
+			echo json_encode($returndata);
+			exit;
+		}
 		$Chanpin = D("Chanpin");
 		$newdata['xianlu'] = $xianlu;
-		$newdata['user_name'] = 'test';
-		$newdata['bumen_copy'] = 'test111';
+		$newdata['user_name'] = $record['user_name'];
+		$newdata['bumen_copy'] = $record['bumen_copy'];
 		$newdata['clientID'] = 111;//端ID
 		$newdata['clientdataID'] = $clientdataID;//数据ID
 		$newdata['xianlu']['datatext'] = serialize($xianlu);
