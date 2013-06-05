@@ -22,13 +22,13 @@ class ServerAction extends Action{
 			exit;
 		}
 		//获得客户端操作记录
-//		$record = FileGetContents(CLIENT_INDEX."Client/_getActHistory/dataID/".$clientdataID."/datatype/线路/status/提交到网店");
-//		if(!$record){
-//			$returndata['msg'] = "客户端记录获取失败！";
-//			$returndata['error'] = 'true';
-//			echo json_encode($returndata);
-//			exit;
-//		}
+		$record = FileGetContents(CLIENT_INDEX."Client/_getActHistory/dataID/".$clientdataID."/datatype/线路/status/提交到网店");
+		if(!$record){
+			$returndata['msg'] = "客户端记录获取失败！";
+			$returndata['error'] = 'true';
+			echo json_encode($returndata);
+			exit;
+		}
 		$Chanpin = D("Chanpin");
 		$newdata['xianlu'] = $xianlu;
 		$newdata['user_name'] = $record['user_name'];
