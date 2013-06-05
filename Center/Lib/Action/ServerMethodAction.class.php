@@ -163,8 +163,15 @@ class ServerMethodAction extends CommonAction{
 		$ViewXianlu = D("ViewXianlu");
 		$mid =  0;//会员ID
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '$chanpinID'")->find();
-		//线路文章
-		$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
+		if($xianlu['kind'] == '自由行'){
+			//线路文章自由行
+			$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,B_XIANLU_TYPEID,B_XIANLU_CHANNEL);
+		}
+		else{
+			//线路文章参团游
+			$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
+		}
+		
 	}
 	
 	
