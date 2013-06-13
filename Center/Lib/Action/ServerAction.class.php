@@ -8,17 +8,16 @@ class ServerAction extends Action{
 		//链接服务器生成
 		$clientdataID = $_REQUEST['chanpinID'];
 		$xianlu = FileGetContents(CLIENT_INDEX."Client/_getxianlu/chanpinID/".$clientdataID);
-		$getres = json_decode($serverdataID,true);
-		if($getres['error']){
-			$returndata['msg'] = $getres['msg'];
+		if($xianlu['error']){
+			$returndata['msg'] = $xianlu['msg'];
 			$returndata['error'] = 'true';
-			echo json_encode($returndata);
+			echo serialize($returndata);
 			exit;
 		}
 		if($xianlu['serverdataID']){
-			$returndata['msg'] = "客户端产品获得失败！";
+			$returndata['msg'] = "客户端产品已经提交！";
 			$returndata['error'] = 'true';
-			echo json_encode($returndata);
+			echo serialize($returndata);
 			exit;
 		}
 		//获得客户端操作记录
@@ -26,7 +25,7 @@ class ServerAction extends Action{
 		if(!$record){
 			$returndata['msg'] = "客户端记录获取失败！";
 			$returndata['error'] = 'true';
-			echo json_encode($returndata);
+			echo serialize($returndata);
 			exit;
 		}
 		$Chanpin = D("Chanpin");
