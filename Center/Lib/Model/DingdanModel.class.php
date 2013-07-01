@@ -1,8 +1,8 @@
 <?php
 
-class DingdanModel extends RelationModel {
-	protected $trueTableName = 'center_userdata_dingdan';	
-	protected $pk = 'userdataID';
+class DingdanModel extends Model {
+	protected $trueTableName = 'center_chanpin_dingdan';	
+	protected $pk = 'chanpinID';
    // 自动验证设置 
     protected $_validate = array( 
 //        array('title_copy', 'require', 'title_copy不能为空！', 1,'',1), 

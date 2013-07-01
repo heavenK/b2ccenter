@@ -66,9 +66,172 @@ class ServerAction extends Action{
 			A("ServerMethod")->_updatetocms($chanpinID);
 			echo serialize($chanpinID);	
 		}
-		else
-			echo 'false';
+		else{
+			$returndata['msg'] = "推送失败！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
 	}
+	
+	
+	//线路生成
+    public function dopostchanpin_qianzheng() {
+		//链接服务器生成
+		$clientdataID = $_REQUEST['chanpinID'];
+		$qianzheng = FileGetContents(CLIENT_INDEX."Client/_getqianzheng/chanpinID/".$clientdataID);
+		if($qianzheng['error']){
+			$returndata['msg'] = $qianzheng['msg'];
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		if($qianzheng['serverdataID']){
+			$returndata['msg'] = "客户端产品已经提交！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		//获得客户端操作记录
+		$record = FileGetContents(CLIENT_INDEX."Client/_getActHistory/dataID/".$clientdataID."/datatype/签证/status/提交到网店");
+		if(!$record){
+			$returndata['msg'] = "客户端记录获取失败！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		$Chanpin = D("Chanpin");
+		$newdata['qianzheng'] = $qianzheng;
+		$newdata['user_name'] = $record['user_name'];
+		$newdata['bumen_copy'] = $record['bumen_copy'];
+		$newdata['clientID'] = 111;//端ID
+		$newdata['clientdataID'] = $clientdataID;//数据ID
+		$newdata['qianzheng']['datatext'] = serialize($qianzheng);
+		C('TOKEN_ON',false);
+		if(false !== $Chanpin->relation("qianzheng")->myRcreate($newdata)){
+			$chanpinID = $Chanpin->getRelationID();
+			//同步生成到dede
+			A("ServerMethod")->_updatetocms_qianzheng($chanpinID);
+			echo serialize($chanpinID);	
+		}
+		else{
+			$returndata['msg'] = "推送失败！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+	}
+	
+	
+	
+	//更新线路产品
+    public function updatechanpin() {
+		//链接服务器生成
+		$clientdataID = $_REQUEST['chanpinID'];
+		$xianlu = FileGetContents(CLIENT_INDEX."Client/_getxianlu/chanpinID/".$clientdataID);
+		if($xianlu['error']){
+			$returndata['msg'] = $xianlu['msg'];
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		if(!$xianlu['serverdataID']){
+			$returndata['msg'] = "客户端产品不存在！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		$Chanpin = D("Chanpin");
+		$chanpin = $Chanpin->relation("xianlu")->where("`clientdataID` = '$clientdataID' AND `chanpinID` = '$xianlu[serverdataID]'")->find();
+		if(!$chanpin){
+			$returndata['msg'] = "服务器产品不存在！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		C('TOKEN_ON',false);
+		//更新线路
+		$chanpin['xianlu']['title'] = $xianlu['title'];
+		$chanpin['xianlu']['zhuti'] = $xianlu['zhuti'];
+		$chanpin['xianlu']['tianshu'] = $xianlu['tianshu'];
+		$chanpin['xianlu']['chutuanriqi'] = $xianlu['chutuanriqi'];
+		$chanpin['xianlu']['shoujia'] = $xianlu['shoujia'];
+		$chanpin['xianlu']['chufadi'] = $xianlu['chufadi'];
+		$chanpin['xianlu']['mudidi'] = $xianlu['mudidi'];
+		$chanpin['xianlu']['datatext'] = serialize($xianlu);
+		if(false !== $Chanpin->relation("xianlu")->myRcreate($chanpin)){
+			//更新子团
+			$zituanlist = $Chanpin->relationGet("zituanlist");
+			foreach($zituanlist as $v){
+				foreach($xianlu['zituanlist'] as $vol){
+					if($v['clientdataID'] == $vol['chanpinID'] && $v['chutuanriqi'] == $vol['chutuanriqi']){
+						$v['zituan']['title_copy'] = $xianlu['title'];
+						$v['zituan']['zhuti'] = $xianlu['zhuti'];
+						$v['zituan']['baomingjiezhi'] = $vol['baomingjiezhi'];
+						$v['zituan']['renshu'] = $vol['renshu'];
+						$v['zituan']['tuanhao'] = $vol['tuanhao'];
+						$v['zituan']['adult_price'] = $xianlu['shoujia']+$vol['adultxiuzheng'];
+						$v['zituan']['child_price'] = $xianlu['ertongshoujia']+$vol['childxiuzheng'];
+						if(false === $Chanpin->relation("zituan")->myRcreate($v)){
+							$returndata['msg'] = "子团推送错误！";
+							$returndata['detail'] = $Chanpin;
+							$returndata['error'] = 'true';
+							echo serialize($returndata);
+							exit;
+						}
+					}
+				}
+			}
+		}
+		else{
+			$returndata['msg'] = "线路推送错误！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		echo serialize($xianlu);
+	}
+	
+	
+	//更新签证产品
+    public function updatechanpin_qianzheng() {
+		//链接服务器生成
+		$clientdataID = $_REQUEST['chanpinID'];
+		$qianzheng = FileGetContents(CLIENT_INDEX."Client/_getqianzheng/chanpinID/".$clientdataID);
+		if($qianzheng['error']){
+			$returndata['msg'] = $qianzheng['msg'];
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		if(!$qianzheng['serverdataID']){
+			$returndata['msg'] = "客户端产品不存在！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		$Chanpin = D("Chanpin");
+		$chanpin = $Chanpin->relation("qianzheng")->where("`clientdataID` = '$clientdataID' AND `chanpinID` = '$qianzheng[serverdataID]'")->find();
+		if(!$chanpin){
+			$returndata['msg'] = "服务器产品不存在！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		C('TOKEN_ON',false);
+		//更新
+		$chanpin['qianzheng']['title'] = $qianzheng['title'];
+		$chanpin['qianzheng']['shoujia'] = $qianzheng['shoujia'];
+		$chanpin['qianzheng']['datatext'] = serialize($qianzheng);
+		if(false === $Chanpin->relation("qianzheng")->myRcreate($chanpin)){
+			$returndata['msg'] = "签证推送错误！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		echo serialize($qianzheng);
+	}
+	
 	
 	//线路
     public function getxianlubyID() {
@@ -94,16 +257,34 @@ class ServerAction extends Action{
 		echo  $_GET['jsoncallback'].'('.$json.')';
 	}
 	
+	
 	//子团
     public function getzituanbyID() {
 		$chanpinID = $_REQUEST['chanpinID'];
 		$ViewZituan = D("ViewZituan");
 		$zituan = $ViewZituan->relation("xianlulist")->where("`chanpinID` = '$chanpinID'")->find();
 		if(!$zituan){
-			echo 'false';
+			$returndata['msg'] = '子团获取失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
 		}
 		else
 			echo serialize($zituan);
+	}
+	
+	
+	//签证
+    public function getqianzhengbyID() {
+		$chanpinID = $_REQUEST['chanpinID'];
+		$ViewQianzheng = D("ViewQianzheng");
+		$qianzheng = $ViewQianzheng->where("`chanpinID` = '$chanpinID'")->find();
+		if(!$qianzheng){
+			$returndata['msg'] = '签证获取失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+		}
+		else
+			echo serialize($qianzheng);
 	}
 	
 	
@@ -134,6 +315,7 @@ class ServerAction extends Action{
 	}
 	
 	
+	
 	//检查用户登录
     public function getinfo() {
 		$json['uid'] = 1;
@@ -141,6 +323,101 @@ class ServerAction extends Action{
 		echo  $_GET['jsoncallback'].'('.$json.')';
 	
 	}
+	
+	
+	//接收推送订单
+    public function dopostOrder() {
+		$orderID = $_REQUEST['orderID'];
+		$Dingdan = D("Dingdan");
+		$order = $Dingdan->where("`orderID` = '$orderID'")->find();
+		if($order){
+			$returndata['msg'] = "订单已经存在服务器！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		$order = FileGetContents(WEB_INDEX."B2CService/getorder/orderID/".$orderID);
+		if($order['error']){
+			$returndata['msg'] = '网站订单获取失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		//判断状态
+		if($order['status'] != '已支付'){
+			$returndata['msg'] = '订单状态错误！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		//获得产品
+		$Chanpin = D("Chanpin");
+		$chanpin = $Chanpin->where("`chanpinID` = '$order[serverdataID]'")->find();
+		if(!$chanpin){
+			$returndata['msg'] = '服务器产品获取失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+		//保存订单
+		C('TOKEN_ON',false);
+		$Chanpin = D("Chanpin");
+		$dingdan['parentID'] = $order['serverdataID'];
+		$dingdan['dingdan']['erp_parentID'] = $chanpin['clientdataID'];
+		$dingdan['dingdan']['title'] = $order['title_copy'];
+		$dingdan['dingdan']['chengrenshu'] = $order['chengrenshu'];
+		$dingdan['dingdan']['ertongshu'] = $order['ertongshu'];
+		$dingdan['dingdan']['price'] = $order['price'];
+		$dingdan['dingdan']['lxr_telnum'] = $order['lxr_telnum'];
+		$dingdan['dingdan']['lxr_email'] = $order['lxr_email'];
+		$dingdan['dingdan']['lxr_name'] = $order['lxr_name'];
+		$dingdan['dingdan']['orderID'] = $order['orderID'];
+		$dingdan['dingdan']['orderNo'] = $order['orderNo'];
+		$dingdan['dingdan']['type'] = $order['type'];
+		$dingdan['dingdan']['adult_price'] = $order['adult_price'];
+		$dingdan['dingdan']['child_price'] = $order['child_price'];
+		$dingdan['dingdan']['webdingdanID'] = $order['id'];
+		$dingdan['dingdan']['datatext'] = serialize($order);
+		if(false !== $Chanpin->relation('dingdan')->myRcreate($dingdan)){
+			$dingdan['chanpinID'] = $Chanpin->getRelationID();
+			//推送到erp
+			$order = FileGetContents(CLIENT_INDEX."Client/dopostOrder/orderID/".$order['orderID']);
+			echo serialize($dingdan);
+		}
+		else{
+			$returndata['msg'] = '订单服务器推送失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+	}
+	
+	
+	
+    public function getorder() {
+		$orderID = $_REQUEST['orderID'];
+		$ViewDingdan = D("ViewDingdan");
+		$order = $ViewDingdan->where("`orderID` = '$orderID'")->find();
+		if($order['type'] == '标准'){
+			$order['zituanlist'] = $ViewDingdan->relationGet('zituanlist');
+		}
+		if(!$order){
+			$returndata['msg'] = '订单获取失败！';
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+		}
+		else
+			echo serialize($order);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

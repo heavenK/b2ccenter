@@ -175,8 +175,20 @@ class ServerMethodAction extends CommonAction{
 	}
 	
 	
+	//检查产品
+	public function _updatetocms_qianzheng($chanpinID) {
+		C('TOKEN_ON',false);
+		$ViewQianzheng = D("ViewQianzheng");
+		$mid =  0;//会员ID
+		$qianzheng = $ViewQianzheng->where("`chanpinID` = '$chanpinID'")->find();
+		//签证
+		$this->_processArticle($qianzheng,'DEDEAddonarticleQianzheng',$mid,A_QIANZHENG_TYPEID,A_QIANZHENG_CHANNEL);
+		
+	}
+	
+	
 	//文章流程
-	public function _processArticle($xianlu,$addonarticleModel,$mid,$typeid,$channel,$zituan='') {
+	public function _processArticle($chanpin,$addonarticleModel,$mid,$typeid,$channel,$zituan='') {
 		$DEDEAddonarticle = D($addonarticleModel);//自定义模型文章附表
 		$DEDEArchives = D("DEDEArchives");//文章主表
 		$DEDEArctiny = D("DEDEArctiny");
@@ -187,9 +199,9 @@ class ServerMethodAction extends CommonAction{
 		$arctiny = $DEDEArctiny->create($arctiny);
 		$arctinyID = $DEDEArctiny->add();//自增型主键，可获得ID
 		//添加文章主表
-		$archives['title'] = $xianlu['title'];//标题
-		$archives['shorttitle'] =  $xianlu['zhuti'];//简略标题
-		$archives['writer'] =  $xianlu['user_name'];//作者
+		$archives['title'] = $chanpin['title'];//标题
+		$archives['shorttitle'] =  $chanpin['zhuti'];//简略标题
+		$archives['writer'] =  $chanpin['user_name'];//作者
 		$archives['source'] =  $company['bumen_copy'];//来源
 		$archives['id'] =  $arctinyID;//文章ID
 		$archives['mid'] =  $mid;//会员ID
@@ -199,23 +211,19 @@ class ServerMethodAction extends CommonAction{
 		$DEDEArchives->add();
 		//添加文章附加表
 		$addonarticle['aid'] =  $arctinyID;//文章ID
-		$addonarticle['body'] =  $xianlu;
+		$addonarticle['body'] =  $chanpin;
 		$addonarticle['typeid'] =  $archives['typeid'];
-		$addonarticle['serverdataid'] =  $xianlu['chanpinID'];//服务器ID
-		
-		$addonarticle['jiage'] =  $xianlu['shoujia'];
-		$addonarticle['chufariqi'] =  $xianlu['chutuanriqi'];
-		$addonarticle['chufachengshi'] =  $xianlu['chufadi'];
-		$addonarticle['mudidi'] =  $xianlu['mudidi'];
-		$addonarticle['tianshu'] =  $xianlu['tianshu'];
-		
-		if($addonarticleModel == 'DEDEAddonarticleZituan'){
-			$addonarticle['chutuanriqi'] =  $zituan['chutuanriqi'];
-			$addonarticle['tuanhao'] =  $zituan['tuanhao'];
-			$addonarticle['dataid'] =  $zituan['chanpinID'];
-		}
+		$addonarticle['serverdataid'] =  $chanpin['chanpinID'];//服务器ID
 		if($addonarticleModel == 'DEDEAddonarticleXianlu'){
-			$addonarticle['dataid'] =  $xianlu['chanpinID'];
+			$addonarticle['jiage'] =  $chanpin['shoujia'];
+			//日期处理
+			$addonarticle['chufariqi'] =  str_replace(";",",",$chanpin['chutuanriqi']);;
+			$addonarticle['chufachengshi'] =  $chanpin['chufadi'];
+			$addonarticle['mudidi'] =  $chanpin['mudidi'];
+			$addonarticle['tianshu'] =  $chanpin['tianshu'];
+		}
+		if($addonarticleModel == 'DEDEAddonarticleQianzheng'){
+			$addonarticle['jiage'] =  $chanpin['shoujia'];
 		}
 		$addonarticle = $DEDEAddonarticle->create($addonarticle);
 		$DEDEAddonarticle->add();

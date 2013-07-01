@@ -18,6 +18,14 @@ class ServerChanpinAction extends Action{
 		$this->display('index');
     }
 	
+    public function qianzheng() {
+		A("Method")->showDirectory("签证产品");
+		$chanpin_list = A('ServerMethod')->_listChanpin('ViewQianzheng',$_REQUEST);
+		$this->assign("page",$chanpin_list['page']);
+		$this->assign("chanpin_list",$chanpin_list['chanpin']);
+		$this->display('qianzheng');
+    }
+	
 	public function left_fabu($htmltp='',$pagetype='') {
 		$this->display('ServerChanpin:'.$htmltp);
 	}

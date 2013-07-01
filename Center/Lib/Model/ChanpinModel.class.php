@@ -59,6 +59,10 @@ class ChanpinModel extends RelationModel {
 		'dingdanlist'=>array('mapping_type'=>HAS_MANY,'class_name'=>'viewcenter_chanpin_dingdan','foreign_key'=>'parentID','condition'=>"`status_system` = '1'"),
 //		//dingdan
 		'dingdan'=>array('mapping_type'=>HAS_ONE,'class_name'=>'Dingdan','foreign_key'=>'chanpinID'),
+		//qianzheng
+		'qianzheng'=>array('mapping_type'=>HAS_ONE,'class_name'=>'Qianzheng','foreign_key'=>'chanpinID'),
+		
+		
 	);
 	
 

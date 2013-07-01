@@ -1,6 +1,6 @@
 <?php
-class DEDEAddonarticleZituanModel extends DEDEConfigModel {
-	protected $trueTableName=ZITUAN_ADDONARTICLE;
+class DEDEAddonarticleQianzhengModel extends DEDEConfigModel {
+	protected $trueTableName=A_QIANZHENG_ADDONARTICLE;
 	protected $pk = 'id';	
 
    // 自动验证设置
