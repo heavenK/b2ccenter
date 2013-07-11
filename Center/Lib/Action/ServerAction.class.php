@@ -250,7 +250,7 @@ class ServerAction extends Action{
 			$json['data'][$i]['renshu'] = $v['renshu'];
 			$json['data'][$i]['adult_price'] = $v['adult_price'];
 			$json['data'][$i]['child_price'] = $v['child_price'];
-			$json['data'][$i]['erpno'] = $v['bianhao'];
+			$json['data'][$i]['erpno'] = $v['tuanhao'];
 			$i++;
 		}
 		$json = json_encode($json);
@@ -317,12 +317,12 @@ class ServerAction extends Action{
 	
 	
 	//检查用户登录
-    public function getinfo() {
-		$json['uid'] = 1;
-		$json = json_encode($json);
-		echo  $_GET['jsoncallback'].'('.$json.')';
-	
-	}
+//    public function getinfo() {
+//		$json['uid'] = 1;
+//		$json = json_encode($json);
+//		echo  $_GET['jsoncallback'].'('.$json.')';
+//	
+//	}
 	
 	
 	//接收推送订单
