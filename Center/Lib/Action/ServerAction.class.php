@@ -30,6 +30,7 @@ class ServerAction extends Action{
 		}
 		$Chanpin = D("Chanpin");
 		$newdata['xianlu'] = $xianlu;
+		$newdata['status'] = '上架';
 		$newdata['user_name'] = $record['user_name'];
 		$newdata['bumen_copy'] = $record['bumen_copy'];
 		$newdata['clientID'] = 111;//端ID
@@ -46,6 +47,7 @@ class ServerAction extends Action{
 					$zituan['chanpinID'] = $zt['chanpinID'];
 				}
 				$zituan['parentID'] = $chanpinID;
+				$zituan['status'] = '上架';
 				$zituan['user_name'] = $newdata['user_name'];
 				$zituan['bumen_copy'] = $newdata['bumen_copy'];
 				$zituan['clientID'] = $newdata['clientID'];
@@ -58,7 +60,7 @@ class ServerAction extends Action{
 				$zituan['zituan']['baomingjiezhi'] = $v['baomingjiezhi'];
 				$zituan['zituan']['renshu'] = $v['renshu'];
 				$zituan['zituan']['adult_price'] = $xianlu['shoujia']+$v['adultxiuzheng'];
-				$zituan['zituan']['child_price'] = $xianlu['erongshoujia']+$v['childxiuzheng'];
+				$zituan['zituan']['child_price'] = $xianlu['ertongshoujia']+$v['childxiuzheng'];
 				$zituan['zituan']['tuanhao'] = $v['tuanhao'];
 				$Chanpin->relation("zituan")->myRcreate($zituan);
 			}
@@ -73,6 +75,7 @@ class ServerAction extends Action{
 			exit;
 		}
 	}
+	
 	
 	
 	//线路生成
@@ -162,8 +165,10 @@ class ServerAction extends Action{
 		if(false !== $Chanpin->relation("xianlu")->myRcreate($chanpin)){
 			//更新子团
 			$zituanlist = $Chanpin->relationGet("zituanlist");
-			foreach($zituanlist as $v){
-				foreach($xianlu['zituanlist'] as $vol){
+			foreach($xianlu['zituanlist'] as $vol){
+				$is_has = 0;
+				foreach($zituanlist as $v){
+					//子团存在
 					if($v['clientdataID'] == $vol['chanpinID'] && $v['chutuanriqi'] == $vol['chutuanriqi']){
 						$v['zituan']['title_copy'] = $xianlu['title'];
 						$v['zituan']['zhuti'] = $xianlu['zhuti'];
@@ -179,7 +184,28 @@ class ServerAction extends Action{
 							echo serialize($returndata);
 							exit;
 						}
+						$is_has = 1;
+						break;
 					}
+				}
+				//新增
+				if($is_has == 0){
+					$zituan['parentID'] = $xianlu['serverdataID'];
+					$zituan['user_name'] = $chanpin['user_name'];
+					$zituan['bumen_copy'] = $chanpin['bumen_copy'];
+					$zituan['clientID'] = $chanpin['clientID'];
+					$zituan['clientdataID'] = $vol['chanpinID'];//客户端子团ID
+					$zituan['zituan']['title_copy'] = $xianlu['title'];
+					$zituan['zituan']['guojing_copy'] = $xianlu['guojing'];
+					$zituan['zituan']['kind_copy'] = $xianlu['kind'];
+					$zituan['zituan']['zhuti_copy'] = $xianlu['zhuti'];
+					$zituan['zituan']['chutuanriqi'] = $vol['chutuanriqi'];
+					$zituan['zituan']['baomingjiezhi'] = $vol['baomingjiezhi'];
+					$zituan['zituan']['renshu'] = $vol['renshu'];
+					$zituan['zituan']['tuanhao'] = $vol['tuanhao'];
+					$zituan['zituan']['adult_price'] = $xianlu['shoujia']+$vol['adultxiuzheng'];
+					$zituan['zituan']['child_price'] = $xianlu['ertongshoujia']+$vol['childxiuzheng'];
+					$Chanpin->relation("zituan")->myRcreate($zituan);
 				}
 			}
 		}
@@ -191,6 +217,40 @@ class ServerAction extends Action{
 		}
 		echo serialize($xianlu);
 	}
+	
+	
+	
+	
+	//更新产品状态
+    public function updatechanpin_status() {
+		//链接服务器生成
+		$clientdataID = $_REQUEST['chanpinID'];
+		if($_REQUEST['chanpintype'] == '子团'){
+			$zituan = FileGetContents(CLIENT_INDEX."Client/_getzituan/chanpinID/".$clientdataID);
+			if($zituan['error']){
+				$returndata['msg'] = $xianlu['msg'];
+				$returndata['error'] = 'true';
+				echo serialize($returndata);
+				exit;
+			}
+			if(!$zituan['xianlulist']['serverdataID']){
+				$returndata['msg'] = "客户端产品不存在！";
+				$returndata['error'] = 'true';
+				echo serialize($returndata);
+				exit;
+			}
+			C('TOKEN_ON',false);
+			$Chanpin = D("Chanpin");
+			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
+			$chanpin['status'] = $zituan['status_shop'];
+			if(true === $Chanpin->mycreate($chanpin)){
+				echo serialize($chanpin);
+			}
+		}
+	}
+	
+	
+	
 	
 	
 	//更新签证产品
@@ -244,6 +304,9 @@ class ServerAction extends Action{
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '$erpxianluID'")->find();
 		$i = 0;
 		foreach($xianlu['zituanlist'] as $v){
+			//不显示下架子团
+			if($v['status'] == '下架')
+				continue;
 			$json['data'][$i]['chanpinID'] = $v['chanpinID'];
 			$json['data'][$i]['date'] = $v['chutuanriqi'];
 			$json['data'][$i]['enddate'] = jisuanriqi($v['chutuanriqi'],$v['baomingjiezhi'],'减少');
