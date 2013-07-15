@@ -225,6 +225,7 @@ class ServerMethodAction extends CommonAction{
 		if($addonarticleModel == 'DEDEAddonarticleQianzheng'){
 			$addonarticle['jiage'] =  $chanpin['shoujia'];
 		}
+		$addonarticle['chufachengshi'] =  '大连';//默认
 		$addonarticle = $DEDEAddonarticle->create($addonarticle);
 		$DEDEAddonarticle->add();
 		return $arctinyID;
