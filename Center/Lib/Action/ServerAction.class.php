@@ -219,8 +219,11 @@ class ServerAction extends Action{
 				}
 				if($mark == 0){
 					$v['status'] = '下架';
+					dump($v);
+					if(false === $Chanpin->save($v)){
+						dump($Chanpin);
+					}
 				}
-				$Chanpin->save($v);
 			}
 		}
 		else{
