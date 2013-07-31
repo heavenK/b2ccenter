@@ -229,6 +229,10 @@ class ServerAction extends Action{
 			echo serialize($returndata);
 			exit;
 		}
+		
+		dump($zituanlist);
+		dump($xianlu['zituanlist']);
+		
 		echo serialize($xianlu);
 	}
 	
