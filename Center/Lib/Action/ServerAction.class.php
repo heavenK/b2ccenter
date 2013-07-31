@@ -208,6 +208,20 @@ class ServerAction extends Action{
 					$Chanpin->relation("zituan")->myRcreate($zituan);
 				}
 			}
+			//不存在子团下架
+			foreach($zituanlist as $v){
+				$mark = 0;
+				foreach($xianlu['zituanlist'] as $vol){
+					if($v['clientdataID'] == $vol['chanpinID'] && $v['chutuanriqi'] == $vol['chutuanriqi']){
+						$mark = 1;
+						break;
+					}
+				}
+				if($mark == 0){
+					$v['status'] = '下架';
+				}
+				$Chanpin->save($v);
+			}
 		}
 		else{
 			$returndata['msg'] = "线路推送错误！";
