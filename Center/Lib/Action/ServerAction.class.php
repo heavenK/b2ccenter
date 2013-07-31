@@ -219,9 +219,11 @@ class ServerAction extends Action{
 				}
 				if($mark == 0){
 					$v['status'] = '下架';
-					dump($v);
 					if(false === $Chanpin->mycreate($v)){
-						dump($Chanpin);
+						$returndata['msg'] = "子团状态修改失败！";
+						$returndata['error'] = 'true';
+						echo serialize($returndata);
+						exit;
 					}
 				}
 			}
@@ -232,10 +234,6 @@ class ServerAction extends Action{
 			echo serialize($returndata);
 			exit;
 		}
-		
-		dump($zituanlist);
-		dump($xianlu['zituanlist']);
-		
 		echo serialize($xianlu);
 	}
 	
