@@ -220,7 +220,7 @@ class ServerAction extends Action{
 				if($mark == 0){
 					$v['status'] = '下架';
 					dump($v);
-					if(false === $Chanpin->save($v)){
+					if(false === $Chanpin->mycreate($v)){
 						dump($Chanpin);
 					}
 				}
