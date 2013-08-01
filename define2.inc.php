@@ -16,6 +16,15 @@
     define('A_XIANLU_TYPEID', 17);
 	//参团游线路频道模型ID
     define('A_XIANLU_CHANNEL', 7);
+	
+	//参团游线路主栏目ID
+    define('A_XIANLU_TYPEID_GN', 26);
+	//参团游线路频道模型ID
+    define('A_XIANLU_CHANNEL_GN', 7);
+	//参团游线路主栏目ID
+    define('A_XIANLU_TYPEID_JW', 25);
+	//参团游线路频道模型ID
+    define('A_XIANLU_CHANNEL_JW', 7);
 	//参团游线路附表ID
     define('A_XIANLU_ADDONARTICLE', 'cty_addon7');
 	

@@ -169,7 +169,12 @@ class ServerMethodAction extends CommonAction{
 		}
 		else{
 			//线路文章参团游
-			$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID,A_XIANLU_CHANNEL);
+			if($xianlu['guojing'] == '国内' ){
+				$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID_GN,A_XIANLU_CHANNEL);
+			}
+			if($xianlu['guojing'] == '境外' ){
+				$this->_processArticle($xianlu,'DEDEAddonarticleXianlu',$mid,A_XIANLU_TYPEID_JW,A_XIANLU_CHANNEL);
+			}
 		}
 		
 	}
