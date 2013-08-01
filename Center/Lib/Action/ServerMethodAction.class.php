@@ -161,7 +161,7 @@ class ServerMethodAction extends CommonAction{
 	public function _updatetocms($chanpinID) {
 		C('TOKEN_ON',false);
 		$ViewXianlu = D("ViewXianlu");
-		$mid =  0;//会员ID
+		$mid =  1;//会员ID
 		$xianlu = $ViewXianlu->relation("zituanlist")->where("`chanpinID` = '$chanpinID'")->find();
 		if($xianlu['kind'] == '自由人'){
 			//线路文章自由行
@@ -179,7 +179,7 @@ class ServerMethodAction extends CommonAction{
 	public function _updatetocms_qianzheng($chanpinID) {
 		C('TOKEN_ON',false);
 		$ViewQianzheng = D("ViewQianzheng");
-		$mid =  0;//会员ID
+		$mid =  1;//会员ID
 		$qianzheng = $ViewQianzheng->where("`chanpinID` = '$chanpinID'")->find();
 		//签证
 		$this->_processArticle($qianzheng,'DEDEAddonarticleQianzheng',$mid,A_QIANZHENG_TYPEID,A_QIANZHENG_CHANNEL);
