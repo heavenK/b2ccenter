@@ -62,6 +62,7 @@ class ServerAction extends Action{
 				$zituan['zituan']['adult_price'] = $xianlu['shoujia']+$v['adultxiuzheng'];
 				$zituan['zituan']['child_price'] = $xianlu['ertongshoujia']+$v['childxiuzheng'];
 				$zituan['zituan']['tuanhao'] = $v['tuanhao'];
+				$zituan['zituan']['second_confirm'] = $v['second_confirm'];
 				$Chanpin->relation("zituan")->myRcreate($zituan);
 			}
 			//同步生成到dede
@@ -170,11 +171,13 @@ class ServerAction extends Action{
 				foreach($zituanlist as $v){
 					//子团存在
 					if($v['clientdataID'] == $vol['chanpinID'] && $v['chutuanriqi'] == $vol['chutuanriqi']){
+						$v['status'] = $vol['status_shop'];
 						$v['zituan']['title_copy'] = $xianlu['title'];
 						$v['zituan']['zhuti'] = $xianlu['zhuti'];
 						$v['zituan']['baomingjiezhi'] = $vol['baomingjiezhi'];
 						$v['zituan']['renshu'] = $vol['renshu'];
 						$v['zituan']['tuanhao'] = $vol['tuanhao'];
+						$v['zituan']['second_confirm'] = $vol['second_confirm'];
 						$v['zituan']['adult_price'] = $xianlu['shoujia']+$vol['adultxiuzheng'];
 						$v['zituan']['child_price'] = $xianlu['ertongshoujia']+$vol['childxiuzheng'];
 						if(false === $Chanpin->relation("zituan")->myRcreate($v)){
@@ -195,6 +198,7 @@ class ServerAction extends Action{
 					$zituan['bumen_copy'] = $chanpin['bumen_copy'];
 					$zituan['clientID'] = $chanpin['clientID'];
 					$zituan['clientdataID'] = $vol['chanpinID'];//客户端子团ID
+					$zituan['status'] = $vol['status_shop'];
 					$zituan['zituan']['title_copy'] = $xianlu['title'];
 					$zituan['zituan']['guojing_copy'] = $xianlu['guojing'];
 					$zituan['zituan']['kind_copy'] = $xianlu['kind'];
@@ -203,6 +207,7 @@ class ServerAction extends Action{
 					$zituan['zituan']['baomingjiezhi'] = $vol['baomingjiezhi'];
 					$zituan['zituan']['renshu'] = $vol['renshu'];
 					$zituan['zituan']['tuanhao'] = $vol['tuanhao'];
+					$zituan['zituan']['second_confirm'] = $vol['second_confirm'];
 					$zituan['zituan']['adult_price'] = $xianlu['shoujia']+$vol['adultxiuzheng'];
 					$zituan['zituan']['child_price'] = $xianlu['ertongshoujia']+$vol['childxiuzheng'];
 					$Chanpin->relation("zituan")->myRcreate($zituan);
