@@ -338,6 +338,7 @@ class ServerAction extends Action{
 			$json['data'][$i]['adult_price'] = $v['adult_price'];
 			$json['data'][$i]['child_price'] = $v['child_price'];
 			$json['data'][$i]['erpno'] = $v['tuanhao'];
+			$json['data'][$i]['second_confirm'] = $v['second_confirm'];
 			$i++;
 		}
 		$json = json_encode($json);
