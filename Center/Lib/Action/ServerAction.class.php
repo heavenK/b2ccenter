@@ -247,6 +247,8 @@ class ServerAction extends Action{
 	
 	//更新产品状态
     public function updatechanpin_status($clientdataID='',$chanpintype='',$echomsg=1) {
+						dump(123);
+
 		//链接服务器生成
 		if(!$clientdataID)
 			$clientdataID = $_REQUEST['chanpinID'];
@@ -295,6 +297,7 @@ class ServerAction extends Action{
 				echo serialize($returndata);
 				exit;
 			}
+						dump(234);
 			C('TOKEN_ON',false);
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
