@@ -274,7 +274,7 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $zituan['status_shop'];
-			if(true === $Chanpin->save($chanpin)){
+			if(false !== $Chanpin->save($chanpin)){
 				if($echomsg)
 					echo serialize($chanpin);
 			}
