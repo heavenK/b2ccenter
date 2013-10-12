@@ -299,18 +299,13 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
-			dump($chanpin);
-			if(false !== $Chanpin->save($chanpin)){
-				dump($xianlu['zituanlist']);
-				dump($xianlu);
+			if(true === $Chanpin->save($chanpin)){
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
-					dump($v_zt);
 					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
 				}
 				echo serialize($chanpin);
 			}
-			dump($Chanpin);
 		}
 	}
 	
