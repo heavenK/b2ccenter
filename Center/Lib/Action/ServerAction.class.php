@@ -302,6 +302,7 @@ class ServerAction extends Action{
 			if(true === $Chanpin->mycreate($chanpin)){
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
+					dump($v_zt);
 					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
 				}
 				echo serialize($chanpin);
