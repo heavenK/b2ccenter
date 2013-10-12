@@ -299,9 +299,13 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
+			dump($chanpin);
 			if(true === $Chanpin->myRcreate($chanpin)){
+				dump($xianlu['zituanlist']);
+				dump($xianlu);
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
+					dump($v_zt);
 					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
 				}
 				echo serialize($chanpin);
