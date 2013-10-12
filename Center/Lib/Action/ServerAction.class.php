@@ -246,18 +246,50 @@ class ServerAction extends Action{
 	
 	
 	//更新产品状态
-    public function updatechanpin_status() {
+    public function updatechanpin_status($clientdataID='',$chanpintype='',$echomsg=1) {
 		//链接服务器生成
-		$clientdataID = $_REQUEST['chanpinID'];
-		if($_REQUEST['chanpintype'] == '子团'){
+		if(!$clientdataID)
+			$clientdataID = $_REQUEST['chanpinID'];
+		if(!$chanpintype)
+			$chanpintype = $_REQUEST['chanpintype'];
+		if($chanpintype == '子团'){
 			$zituan = FileGetContents(CLIENT_INDEX."Client/_getzituan/chanpinID/".$clientdataID);
 			if($zituan['error']){
+				$returndata['msg'] = $xianlu['msg'];
+				$returndata['error'] = 'true';
+				if($echomsg){
+					echo serialize($returndata);
+					exit;
+				}
+			}
+			if(!$zituan['xianlulist']['serverdataID']){
+				$returndata['msg'] = "客户端产品不存在！";
+				$returndata['error'] = 'true';
+				if($echomsg){
+					echo serialize($returndata);
+					exit;
+				}
+			}
+			C('TOKEN_ON',false);
+			$Chanpin = D("Chanpin");
+			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
+			$chanpin['status'] = $zituan['status_shop'];
+			if(true === $Chanpin->mycreate($chanpin)){
+				if($echomsg)
+					echo serialize($chanpin);
+			}
+			else
+				return false;
+		}
+		if($chanpintype == '线路'){
+			$xianlu = FileGetContents(CLIENT_INDEX."Client/_getxianlu/chanpinID/".$clientdataID);
+			if($xianlu['error']){
 				$returndata['msg'] = $xianlu['msg'];
 				$returndata['error'] = 'true';
 				echo serialize($returndata);
 				exit;
 			}
-			if(!$zituan['xianlulist']['serverdataID']){
+			if(!$xianlu['serverdataID']){
 				$returndata['msg'] = "客户端产品不存在！";
 				$returndata['error'] = 'true';
 				echo serialize($returndata);
@@ -266,8 +298,12 @@ class ServerAction extends Action{
 			C('TOKEN_ON',false);
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
-			$chanpin['status'] = $zituan['status_shop'];
+			$chanpin['status'] = $xianlu['status_shop'];
 			if(true === $Chanpin->mycreate($chanpin)){
+				//修改子团
+				foreach($xianlu['zituanlist'] as $v_zt){
+					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
+				}
 				echo serialize($chanpin);
 			}
 		}
