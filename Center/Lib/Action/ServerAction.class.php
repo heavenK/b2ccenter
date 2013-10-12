@@ -300,7 +300,7 @@ class ServerAction extends Action{
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
 			dump($chanpin);
-			if(true === $Chanpin->myRcreate($chanpin)){
+			if(false !== $Chanpin->myRcreate($chanpin)){
 				dump($xianlu['zituanlist']);
 				dump($xianlu);
 				//修改子团
@@ -310,7 +310,7 @@ class ServerAction extends Action{
 				}
 				echo serialize($chanpin);
 			}
-			
+			dump($Chanpin);
 		}
 	}
 	
