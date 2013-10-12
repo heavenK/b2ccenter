@@ -299,6 +299,7 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
+			dump($chanpin);
 			if(true === $Chanpin->mycreate($chanpin)){
 				dump($xianlu['zituanlist']);
 				dump($xianlu);
