@@ -274,7 +274,7 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $zituan['status_shop'];
-			if(true === $Chanpin->mycreate($chanpin)){
+			if(true === $Chanpin->myRcreate($chanpin)){
 				if($echomsg)
 					echo serialize($chanpin);
 			}
@@ -299,21 +299,13 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
-			dump($chanpin);
-			if(true === $Chanpin->mycreate($chanpin)){
-				dump($xianlu['zituanlist']);
-				dump($xianlu);
+			if(true === $Chanpin->myRcreate($chanpin)){
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
-					dump($v_zt);
 					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
 				}
 				echo serialize($chanpin);
 			}
-						dump(234);
-				dump($xianlu['zituanlist']);
-				dump($xianlu);
-				dump($Chanpin);
 			
 		}
 	}
