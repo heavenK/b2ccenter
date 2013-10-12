@@ -300,6 +300,8 @@ class ServerAction extends Action{
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
 			if(true === $Chanpin->mycreate($chanpin)){
+				dump($xianlu['zituanlist']);
+				dump($xianlu);
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
 					dump($v_zt);
