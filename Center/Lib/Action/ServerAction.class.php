@@ -299,7 +299,7 @@ class ServerAction extends Action{
 			$Chanpin = D("Chanpin");
 			$chanpin = $Chanpin->where("`clientdataID` = '$clientdataID'")->find();
 			$chanpin['status'] = $xianlu['status_shop'];
-			if(true === $Chanpin->save($chanpin)){
+			if(false !== $Chanpin->save($chanpin)){
 				//修改子团
 				foreach($xianlu['zituanlist'] as $v_zt){
 					$this->updatechanpin_status($v_zt['chanpinID'],'子团',0);
