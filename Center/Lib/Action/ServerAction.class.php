@@ -537,12 +537,11 @@ class ServerAction extends Action{
 	
 	
 	
-	
-	
-	
-	
-	
-	
+    public function test111() {
+		
+		A("ServerMethod")->_updatetocms(506);
+		
+	}
 	
 	
 	

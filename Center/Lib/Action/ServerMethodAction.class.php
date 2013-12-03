@@ -194,6 +194,12 @@ class ServerMethodAction extends CommonAction{
 	
 	//文章流程
 	public function _processArticle($chanpin,$addonarticleModel,$mid,$typeid,$channel,$zituan='') {
+		$chanpin['datatext'] = simple_unserialize($chanpin['datatext']);
+		$chanpin['datatext']['xianlu_ext'] = simple_unserialize($chanpin['datatext']['xianlu_ext']);
+		$datatext = simple_unserialize($chanpin['datatext']['datatext']);
+		$xingcheng = $chanpin['datatext']['xingchenglist'];
+		$piclist = explode(',', $datatext['zhongxindatatext']['@attributes']['route_snapShot']);
+		//
 		$DEDEAddonarticle = D($addonarticleModel);//自定义模型文章附表
 		$DEDEArchives = D("DEDEArchives");//文章主表
 		$DEDEArctiny = D("DEDEArctiny");
@@ -205,6 +211,8 @@ class ServerMethodAction extends CommonAction{
 		$arctinyID = $DEDEArctiny->add();//自增型主键，可获得ID
 		//添加文章主表
 		$archives['title'] = $chanpin['title'];//标题
+		$archives['litpic'] = $piclist[0];//缩略图
+		dump($archives);
 		$archives['shorttitle'] =  $chanpin['zhuti'];//简略标题
 		$archives['writer'] =  $chanpin['user_name'];//作者
 		$archives['source'] =  $company['bumen_copy'];//来源
@@ -216,7 +224,7 @@ class ServerMethodAction extends CommonAction{
 		$DEDEArchives->add();
 		//添加文章附加表
 		$addonarticle['aid'] =  $arctinyID;//文章ID
-		$addonarticle['body'] =  $chanpin;
+		//$addonarticle['body'] =  $chanpin;
 		$addonarticle['typeid'] =  $archives['typeid'];
 		$addonarticle['serverdataid'] =  $chanpin['chanpinID'];//服务器ID
 		if($addonarticleModel == 'DEDEAddonarticleXianlu'){
@@ -226,11 +234,20 @@ class ServerMethodAction extends CommonAction{
 			$addonarticle['chufachengshi'] =  $chanpin['chufadi'];
 			$addonarticle['mudidi'] =  $chanpin['mudidi'];
 			$addonarticle['tianshu'] =  $chanpin['tianshu'];
+			$addonarticle['xingcheng'] =  $this->_echo_xingcheng($chanpin['datatext'],$xingcheng,$piclist);
+			$addonarticle['tuijianliyou'] =  $chanpin['datatext']['xingchengtese'];
+			$addonarticle['tebieyouhui'] =  '';
+			$addonarticle['jipiaoxinxi'] =  '';
+			$addonarticle['jiudianxinxi'] =  '';
+			$addonarticle['feiyongshuoming'] =  $chanpin['datatext']['xianlu_ext']['feiyongyes'].'<br/>'.$chanpin['datatext']['xianlu_ext']['feiyongno'].'<br/>'.$chanpin['datatext']['xianlu_ext']['ownExpense'];
+			$addonarticle['qianzhengxuzhi'] =  $chanpin['datatext']['xianlu_ext']['qianzhengxinxi'];
+			$addonarticle['yudingxuzhi'] =  $chanpin['datatext']['xianlu_ext']['yudingtiaokuan'];
+			$addonarticle['fuwubiaozhun'] =  '';
 		}
 		if($addonarticleModel == 'DEDEAddonarticleQianzheng'){
 			$addonarticle['jiage'] =  $chanpin['shoujia'];
 		}
-		$addonarticle['chufachengshi'] =  '大连';//默认
+//		$addonarticle['chufachengshi'] =  '大连';//默认
 		$addonarticle = $DEDEAddonarticle->create($addonarticle);
 		$DEDEAddonarticle->add();
 		return $arctinyID;
@@ -238,6 +255,39 @@ class ServerMethodAction extends CommonAction{
 	
 	
 	
+	//编辑行程
+    public function _echo_xingcheng($chanpin,$xingcheng,$piclist) {
+		if(!$xingcheng)
+			return '';
+		$str = '<ul>';
+		$count = 0 ;$t =-1;
+		while ($count < $chanpin['tianshu']) {$t++;
+			$str .= '<li><div class="cty_article_cont_title"><i>第'.($t+1).'天</i><h1>'.$xingcheng[$count]['title'].'</h1></div><div class="cty_article_cont_infos">';
+			if(strstr($xingcheng[$count]['chanyin'],'早餐')){
+			$str .= '<b>早餐：</b>包含';
+			}else{
+			$str .= '<b>早餐：</b>不含';
+			}
+			if(strstr($xingcheng[$count]['chanyin'],'午餐')){
+			$str .= '<b>午餐：</b>包含';
+			}else{
+			$str .= '<b>午餐：</b>不含';
+			}
+			if(strstr($xingcheng[$count]['chanyin'],'晚餐')){
+			$str .= '<b>晚餐：</b>包含';
+			}else{
+			$str .= '<b>晚餐：</b>不含';
+			}
+			$str .= '<b>住宿：</b>'.$xingcheng[$count]['place'].'</div>';
+			$str .= '<div class="cty_article_cont_cont">';
+			if($piclist[$count])
+				$str .= '<img src="'.$piclist[$count].'" />';
+			$str .= $xingcheng[$count]['content'].'</div></li>';
+			$count++;
+		}
+		$str .= '</ul>';
+		return $str;
+    }
 	
 	
 	

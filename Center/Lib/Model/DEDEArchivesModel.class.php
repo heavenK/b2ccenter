@@ -16,7 +16,7 @@ class DEDEArchivesModel extends DEDEConfigModel {
         array('weight','setdefualt0',1,'callback','weight',1),  //权重		
         array('ismake','setdefualt0',1,'callback','ismake',1),  //是否生成HTML		
         array('flag','setdefualtNULL',1,'callback','flag',1),  //属性		
-        array('litpic','setdefualtnone',1,'callback','dutyadmin',1),  //缩略图		
+        array('litpic','setdefualtnone',1,'callback','litpic',1),  //缩略图		
         array('scores','setdefualt0',1,'callback','scores',1),  //消耗积分		
         array('keywords','setdefualtnone',1,'callback','keywords',1),  //文档关键词		
         array('mtype','setdefualt0',1,'callback','mtype',1),  //自定义类别		
