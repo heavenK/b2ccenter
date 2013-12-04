@@ -212,7 +212,6 @@ class ServerMethodAction extends CommonAction{
 		//添加文章主表
 		$archives['title'] = $chanpin['title'];//标题
 		$archives['litpic'] = $piclist[0];//缩略图
-		dump($archives);
 		$archives['shorttitle'] =  $chanpin['zhuti'];//简略标题
 		$archives['writer'] =  $chanpin['user_name'];//作者
 		$archives['source'] =  $company['bumen_copy'];//来源
